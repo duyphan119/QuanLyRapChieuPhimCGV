@@ -100,8 +100,23 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             {
                 error += "Tên nhân viên không được để trống\n";
             }
-            
-            if(txtPhone.Text.Length != 10)
+            if (txtPersonID.Text.Length != 9 && txtPersonID.Text.Length != 12)
+            {
+                error += "Số CMND có 9 số, CCCD có 12 số\n";
+            }
+            else
+            {
+                try
+                {
+                    decimal phone = Convert.ToDecimal(txtPersonID.Text);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    error += "Số CMND/CCCD không hợp lệ\n";
+                }
+            }
+            if (txtPhone.Text.Length != 10)
             {
                 error += "Số điện thoại phải có 10 chữ số\n";
             }
@@ -110,6 +125,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 try
                 {
                     decimal phone = Convert.ToDecimal(txtPhone.Text);
+
+                    if (dao_e.getByPhone(txtPhone.Text) != null)
+                    {
+                        error += "Số điện thoại đã tồn tại\n";
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -117,7 +137,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                     error += "Số điện thoại không hợp lệ\n";
                 }
             }
-            
 
             if (numSalary.Value == 0)
             {
@@ -132,11 +151,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             if (cbPosition.Text == "")
             {
                 error += "Chưa chọn vị trí\n";
-            }
-
-            if (txtPassword.Text.Length < 6)
-            {
-                error += "Mật khẩu phải có ít nhất 6 kí tự\n";
             }
 
             return error;

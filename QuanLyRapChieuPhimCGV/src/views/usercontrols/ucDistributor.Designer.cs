@@ -30,9 +30,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private void InitializeComponent()
         {
             this.dgvManufacturer = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -42,6 +39,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManufacturer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,8 +58,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.dgvManufacturer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvManufacturer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column2,
-            this.Column3});
+            this.Column2});
             this.dgvManufacturer.Location = new System.Drawing.Point(20, 95);
             this.dgvManufacturer.Name = "dgvManufacturer";
             this.dgvManufacturer.RowHeadersVisible = false;
@@ -70,27 +68,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.dgvManufacturer.Size = new System.Drawing.Size(1222, 559);
             this.dgvManufacturer.TabIndex = 55;
             this.dgvManufacturer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvManufacturer_CellClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Mã NSX";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Tên NSX";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Mô Tả";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // btnSave
             // 
@@ -176,7 +153,21 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.lblId.TabIndex = 40;
             this.lblId.Text = "Mã NPH";
             // 
-            // ucManufacturer
+            // Column1
+            // 
+            this.Column1.HeaderText = "Mã NPH";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Tên NPH";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // ucDistributor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
@@ -191,7 +182,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblId);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "ucManufacturer";
+            this.Name = "ucDistributor";
             this.Size = new System.Drawing.Size(1262, 673);
             this.Load += new System.EventHandler(this.ucManufacturer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvManufacturer)).EndInit();
@@ -203,9 +194,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         #endregion
 
         private System.Windows.Forms.DataGridView dgvManufacturer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDelete;
@@ -215,5 +203,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

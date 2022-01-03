@@ -87,7 +87,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(114, 50);
+            this.txtName.Location = new System.Drawing.Point(142, 50);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(166, 27);
             this.txtName.TabIndex = 2;
@@ -95,7 +95,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // cbId
             // 
             this.cbId.FormattingEnabled = true;
-            this.cbId.Location = new System.Drawing.Point(114, 17);
+            this.cbId.Location = new System.Drawing.Point(142, 17);
             this.cbId.Name = "cbId";
             this.cbId.Size = new System.Drawing.Size(166, 27);
             this.cbId.TabIndex = 3;
@@ -104,7 +104,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(290, 89);
+            this.label2.Location = new System.Drawing.Point(314, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 19);
             this.label2.TabIndex = 6;
@@ -112,7 +112,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(384, 83);
+            this.txtPhone.Location = new System.Drawing.Point(409, 48);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(166, 27);
             this.txtPhone.TabIndex = 7;
@@ -120,7 +120,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(290, 53);
+            this.label3.Location = new System.Drawing.Point(584, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 19);
             this.label3.TabIndex = 8;
@@ -129,7 +129,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 121);
+            this.label4.Location = new System.Drawing.Point(314, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 19);
             this.label4.TabIndex = 10;
@@ -139,7 +139,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             this.rBtnMale.AutoSize = true;
             this.rBtnMale.Checked = true;
-            this.rBtnMale.Location = new System.Drawing.Point(114, 119);
+            this.rBtnMale.Location = new System.Drawing.Point(409, 18);
             this.rBtnMale.Name = "rBtnMale";
             this.rBtnMale.Size = new System.Drawing.Size(63, 23);
             this.rBtnMale.TabIndex = 11;
@@ -150,7 +150,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // rBtnFemale
             // 
             this.rBtnFemale.AutoSize = true;
-            this.rBtnFemale.Location = new System.Drawing.Point(190, 119);
+            this.rBtnFemale.Location = new System.Drawing.Point(478, 18);
             this.rBtnFemale.Name = "rBtnFemale";
             this.rBtnFemale.Size = new System.Drawing.Size(52, 23);
             this.rBtnFemale.TabIndex = 12;
@@ -159,7 +159,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(25, 148);
+            this.btnAdd.Location = new System.Drawing.Point(25, 116);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 31);
             this.btnAdd.TabIndex = 13;
@@ -169,7 +169,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(132, 148);
+            this.btnEdit.Location = new System.Drawing.Point(132, 116);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 31);
             this.btnEdit.TabIndex = 14;
@@ -179,7 +179,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(348, 148);
+            this.btnCancel.Location = new System.Drawing.Point(348, 116);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 31);
             this.btnCancel.TabIndex = 16;
@@ -189,7 +189,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(241, 148);
+            this.btnDelete.Location = new System.Drawing.Point(241, 116);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 31);
             this.btnDelete.TabIndex = 15;
@@ -199,7 +199,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(455, 148);
+            this.btnSave.Location = new System.Drawing.Point(455, 116);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 31);
             this.btnSave.TabIndex = 17;
@@ -229,13 +229,13 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Column3,
             this.Column8,
             this.Column9});
-            this.dgvEmployee.Location = new System.Drawing.Point(20, 185);
+            this.dgvEmployee.Location = new System.Drawing.Point(20, 153);
             this.dgvEmployee.Name = "dgvEmployee";
             this.dgvEmployee.RowHeadersVisible = false;
             this.dgvEmployee.RowHeadersWidth = 51;
             this.dgvEmployee.RowTemplate.Height = 24;
             this.dgvEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmployee.Size = new System.Drawing.Size(1222, 530);
+            this.dgvEmployee.Size = new System.Drawing.Size(1222, 562);
             this.dgvEmployee.TabIndex = 18;
             this.dgvEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployee_CellClick);
             // 
@@ -309,7 +309,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             "Quản Lý",
             "Nhân Viên Quầy Vé",
             "Nhân Viên Quầy Ăn Uống"});
-            this.cbPosition.Location = new System.Drawing.Point(384, 17);
+            this.cbPosition.Location = new System.Drawing.Point(409, 83);
             this.cbPosition.Name = "cbPosition";
             this.cbPosition.Size = new System.Drawing.Size(166, 27);
             this.cbPosition.TabIndex = 19;
@@ -317,7 +317,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(290, 20);
+            this.label5.Location = new System.Drawing.Point(314, 86);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 19);
             this.label5.TabIndex = 20;
@@ -326,7 +326,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(290, 121);
+            this.label6.Location = new System.Drawing.Point(584, 53);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 19);
             this.label6.TabIndex = 22;
@@ -338,14 +338,14 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.cbPermision.Items.AddRange(new object[] {
             "USER",
             "ADMIN"});
-            this.cbPermision.Location = new System.Drawing.Point(384, 115);
+            this.cbPermision.Location = new System.Drawing.Point(668, 50);
             this.cbPermision.Name = "cbPermision";
             this.cbPermision.Size = new System.Drawing.Size(166, 27);
             this.cbPermision.TabIndex = 23;
             // 
             // txtPersonID
             // 
-            this.txtPersonID.Location = new System.Drawing.Point(114, 83);
+            this.txtPersonID.Location = new System.Drawing.Point(142, 83);
             this.txtPersonID.Name = "txtPersonID";
             this.txtPersonID.Size = new System.Drawing.Size(166, 27);
             this.txtPersonID.TabIndex = 25;
@@ -355,9 +355,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(20, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 19);
+            this.label1.Size = new System.Drawing.Size(110, 19);
             this.label1.TabIndex = 24;
-            this.label1.Text = "CCCD";
+            this.label1.Text = "CMND/CCCD";
             // 
             // numSalary
             // 
@@ -367,7 +367,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             0,
             0,
             0});
-            this.numSalary.Location = new System.Drawing.Point(384, 50);
+            this.numSalary.Location = new System.Drawing.Point(668, 17);
             this.numSalary.Maximum = new decimal(new int[] {
             1410065407,
             2,
@@ -380,7 +380,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(664, 113);
+            this.txtPassword.Location = new System.Drawing.Point(668, 83);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(166, 27);
             this.txtPassword.TabIndex = 28;
@@ -388,7 +388,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(570, 119);
+            this.label7.Location = new System.Drawing.Point(584, 86);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 19);
             this.label7.TabIndex = 27;

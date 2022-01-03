@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QuanLyRapChieuPhimCGV.src.models
 {
@@ -12,8 +8,11 @@ namespace QuanLyRapChieuPhimCGV.src.models
         public Schedule schedule;
         public Customer customer;
         public Employee employee;
+        public Chair chair;
         public TicketPrice price;
-
+        public decimal totalPrice;
+        public DateTime date;
+        public int point;//Trả bằng điểm
         public Ticket() { }
     }
 }

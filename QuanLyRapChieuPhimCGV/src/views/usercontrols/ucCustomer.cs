@@ -53,10 +53,27 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 customer.dayOfBirth.ToString("dd-MM-yyyy"),
                 customer.gender,
                 customer.card.name,
-                0
+                customer.totalPoint
             });
         }
+        bool IsValidEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
 
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false; // suggested by @TK-421
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public string validate()
         {
             string error = "";
@@ -66,29 +83,44 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             if (dateTime.Value > today.AddYears(-age))
                 age--;
  
-
+            
             if (cbId.Text == "")
             {
                 error += "Chưa chọn mã thẻ\n";
             }
-            if (txtPhone.Text == "")
+            if (IsValidEmail(txtEmail.Text) == false)
             {
-                error += "Tên thẻ không được để trống\n";
+                error += "Email không hợp lệ\n";
             }
-            try
+            else if (dao_cus.getByEmail(txtEmail.Text) != null)
             {
-                decimal phone = Convert.ToDecimal(txtPhone.Text);
-                if (txtPhone.Text == "")
-                {
-                    error += "Số điện thoại không được để trống\n";
-                }
-            }
-            catch (Exception ex)
-            {
-                error += "Số điện thoại không hợp lệ\n";
-                Console.WriteLine(ex);
+                error += "Email đã tồn tại\n";
             }
 
+            if (cbCard.Text == "")
+            {
+                error += "Chưa chọn thẻ\n";
+            }
+            if(txtPhone.Text.Length != 10)
+            {
+                error += "Số điện thoại có 10 chữ số\n";
+            }
+            else
+            {
+                try
+                {
+                    decimal phone = Convert.ToDecimal(txtPhone.Text);
+                    if(dao_cus.getByPhone(txtPhone.Text) != null)
+                    {
+                        error += "Số điện thoại đã tồn tại\n";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    error += "Số điện thoại không hợp lệ\n";
+                    Console.WriteLine(ex);
+                }
+            }
             return error;
         }
 

@@ -33,6 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,20 +64,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="src\DAO\ConnectDatabase.cs" />
+    <Compile Include="src\DAO\DAO_BillDetail.cs" />
     <Compile Include="src\DAO\DAO_Card.cs" />
     <Compile Include="src\DAO\DAO_Chair.cs" />
     <Compile Include="src\DAO\DAO_Customer.cs" />
     <Compile Include="src\DAO\DAO_Employee.cs" />
     <Compile Include="src\DAO\DAO_ChairType.cs" />
+    <Compile Include="src\DAO\DAO_CategoryMovie.cs" />
+    <Compile Include="src\DAO\DAO_FormatMovie.cs" />
+    <Compile Include="src\DAO\DAO_Bill.cs" />
+    <Compile Include="src\DAO\DAO_Statistic.cs" />
+    <Compile Include="src\DAO\DAO_TicketPrice.cs" />
+    <Compile Include="src\DAO\DAO_Ticket.cs" />
     <Compile Include="src\DAO\DAO_Schedule.cs" />
     <Compile Include="src\DAO\DAO_Movie.cs" />
     <Compile Include="src\DAO\DAO_Food.cs" />
     <Compile Include="src\DAO\DAO_Room.cs" />
     <Compile Include="src\DAO\DAO_GroupFood.cs" />
-    <Compile Include="src\DAO\DAO_ObjectPersonBuyTicket.cs" />
     <Compile Include="src\DAO\DAO_Distributor.cs" />
     <Compile Include="src\DAO\DAO_Screen.cs" />
+    <Compile Include="src\models\Bill.cs" />
+    <Compile Include="src\models\BillDetail.cs" />
     <Compile Include="src\models\Card.cs" />
     <Compile Include="src\models\CategoryMovie.cs" />
     <Compile Include="src\models\Chair.cs" />
@@ -71,7 +98,6 @@
     <Compile Include="src\models\GroupFood.cs" />
     <Compile Include="src\models\Distributor.cs" />
     <Compile Include="src\models\Movie.cs" />
-    <Compile Include="src\models\ObjectPersonBuyTicket.cs" />
     <Compile Include="src\models\Room.cs" />
     <Compile Include="src\models\Schedule.cs" />
     <Compile Include="src\models\_Screen.cs" />
@@ -92,17 +118,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\views\forms\fNewHome.cs">
+    <Compile Include="src\views\forms\fHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\views\forms\fNewHome.Designer.cs">
-      <DependentUpon>fNewHome.cs</DependentUpon>
+    <Compile Include="src\views\forms\fHome.Designer.cs">
+      <DependentUpon>fHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\views\forms\fSelectCategory.cs">
+    <Compile Include="src\views\forms\fReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\views\forms\fSelectCategory.Designer.cs">
-      <DependentUpon>fSelectCategory.cs</DependentUpon>
+    <Compile Include="src\views\forms\fReport.Designer.cs">
+      <DependentUpon>fReport.cs</DependentUpon>
     </Compile>
     <Compile Include="src\views\forms\fSelectChair.cs">
       <SubType>Form</SubType>
@@ -110,11 +136,52 @@
     <Compile Include="src\views\forms\fSelectChair.Designer.cs">
       <DependentUpon>fSelectChair.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\views\forms\fSelectCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\views\forms\fSelectCustomer.Designer.cs">
+      <DependentUpon>fSelectCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\views\forms\fSelectFood.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\views\forms\fSelectFood.Designer.cs">
+      <DependentUpon>fSelectFood.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\views\forms\fSelectMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\views\forms\fSelectMovie.Designer.cs">
+      <DependentUpon>fSelectMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\views\forms\fSelectTicketPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\views\forms\fSelectTicketPrice.Designer.cs">
+      <DependentUpon>fSelectTicketPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\views\forms\fStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\views\forms\fStatistics.Designer.cs">
+      <DependentUpon>fStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\views\report\MyDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="src\views\usercontrols\ucBill.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\views\usercontrols\ucBill.Designer.cs">
       <DependentUpon>ucBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\views\usercontrols\ucCardMovie.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\views\usercontrols\ucCardMovie.Designer.cs">
+      <DependentUpon>ucCardMovie.cs</DependentUpon>
     </Compile>
     <Compile Include="src\views\usercontrols\ucCategoryMovie.cs">
       <SubType>UserControl</SubType>
@@ -188,11 +255,11 @@
     <Compile Include="src\views\usercontrols\ucAdministration.Designer.cs">
       <DependentUpon>ucAdministration.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\views\usercontrols\ucObjectBuyTicket.cs">
+    <Compile Include="src\views\usercontrols\ucReportStatistic.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\views\usercontrols\ucObjectBuyTicket.Designer.cs">
-      <DependentUpon>ucObjectBuyTicket.cs</DependentUpon>
+    <Compile Include="src\views\usercontrols\ucReportStatistic.Designer.cs">
+      <DependentUpon>ucReportStatistic.cs</DependentUpon>
     </Compile>
     <Compile Include="src\views\usercontrols\ucRoom.cs">
       <SubType>UserControl</SubType>
@@ -240,17 +307,37 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="src\views\forms\fNewHome.resx">
-      <DependentUpon>fNewHome.cs</DependentUpon>
+    <EmbeddedResource Include="src\views\forms\fHome.resx">
+      <DependentUpon>fHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\views\forms\fSelectCategory.resx">
-      <DependentUpon>fSelectCategory.cs</DependentUpon>
+    <EmbeddedResource Include="src\views\forms\fReport.resx">
+      <DependentUpon>fReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\views\forms\fSelectChair.resx">
       <DependentUpon>fSelectChair.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\views\forms\fSelectCustomer.resx">
+      <DependentUpon>fSelectCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\views\forms\fSelectFood.resx">
+      <DependentUpon>fSelectFood.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\views\forms\fSelectMovie.resx">
+      <DependentUpon>fSelectMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\views\forms\fSelectTicketPrice.resx">
+      <DependentUpon>fSelectTicketPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\views\forms\fStatistics.resx">
+      <DependentUpon>fStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\views\report\Statistics.rdlc" />
+    <EmbeddedResource Include="src\views\report\Ticket.rdlc" />
     <EmbeddedResource Include="src\views\usercontrols\ucBill.resx">
       <DependentUpon>ucBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\views\usercontrols\ucCardMovie.resx">
+      <DependentUpon>ucCardMovie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\views\usercontrols\ucCategoryMovie.resx">
       <DependentUpon>ucCategoryMovie.cs</DependentUpon>
@@ -288,8 +375,8 @@
     <EmbeddedResource Include="src\views\usercontrols\ucAdministration.resx">
       <DependentUpon>ucAdministration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\views\usercontrols\ucObjectBuyTicket.resx">
-      <DependentUpon>ucObjectBuyTicket.cs</DependentUpon>
+    <EmbeddedResource Include="src\views\usercontrols\ucReportStatistic.resx">
+      <DependentUpon>ucReportStatistic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\views\usercontrols\ucRoom.resx">
       <DependentUpon>ucRoom.cs</DependentUpon>
@@ -306,6 +393,7 @@
     <EmbeddedResource Include="src\views\usercontrols\ucTicketPrice.resx">
       <DependentUpon>ucTicketPrice.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -315,6 +403,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="src\views\report\MyDataSet.xsc">
+      <DependentUpon>MyDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="src\views\report\MyDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="src\views\report\MyDataSet.xss">
+      <DependentUpon>MyDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -397,5 +496,22 @@
   <ItemGroup>
     <None Include="public\img\analytics.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="public\img\cash.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

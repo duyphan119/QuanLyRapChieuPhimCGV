@@ -50,6 +50,40 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             return schedules;
         }
 
+        public List<Schedule> getAllByMovieCanWatch(Movie movie)//Lấy tất cả lịch chiếu chưa chiếu của phim
+        {
+            List<Schedule> schedules = new List<Schedule>();
+            try
+            {
+                DAO_Movie dao_m = new DAO_Movie();
+                DAO_Room dao_r = new DAO_Room();
+                cnn.Open();
+                string query = $@"SELECT * FROM LICHCHIEU
+                        WHERE NGAYCHIEU >= DATEADD(minute, 15, GETDATE()) AND MAPHIM = '{movie.id}'";
+                scm = new SqlCommand(query, cnn);
+                reader = scm.ExecuteReader();
+                while (reader.Read())
+                {
+                    Schedule schedule = new Schedule()
+                    {
+                        id = reader.GetString(0),
+                        movie = dao_m.getById(reader.GetString(1)),
+                        dateTime = reader.GetDateTime(2),
+                        room = dao_r.getById(reader.GetString(3))
+                    };
+                    schedules.Add(schedule);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return schedules;
+        }
         public Schedule getById(string scheduleId)//Lấy phim theo mã phim
         {
             Schedule schedule = null;
@@ -82,7 +116,72 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             }
             return schedule;
         }
+        public Schedule getByDateAndMovie(Movie movie, DateTime date)//Lấy phim theo mã phim
+        {
+            Schedule schedule = null;
+            try
+            {
+                DAO_Movie dao_m = new DAO_Movie();
+                DAO_Room dao_r = new DAO_Room();
+                cnn.Open();
+                string query = $"select malich, maphim, ngaychieu, maphong from lichchieu where maphim = '{movie.id}' and ngaychieu = '{date}'";
+                scm = new SqlCommand(query, cnn);
+                reader = scm.ExecuteReader();
+                if (reader.Read())
+                {
+                    schedule = new Schedule()
+                    {
+                        id = reader.GetString(0),
+                        movie = dao_m.getById(reader.GetString(1)),
+                        dateTime = reader.GetDateTime(2),
+                        room = dao_r.getById(reader.GetString(3))
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return schedule;
+        }
 
+        public bool canInsertSchedule(Schedule schedule)//Kiểm tra lịch này đã có chưa
+        {
+            bool result = true;
+            try
+            {
+                cnn.Open();
+                string query = $@"SELECT *
+                                    FROM LICHCHIEU WHERE MALICH != '{schedule.id}' AND MAPHIM = '{schedule.movie.id}' AND MAPHONG = '{schedule.room.id}' AND 
+                                    datediff(minute, '{schedule.dateTime}', NGAYCHIEU) < {schedule.movie.length + 30}  AND 
+                                    datediff(minute, '{schedule.dateTime}', NGAYCHIEU) > -{schedule.movie.length + 30}";
+                scm = new SqlCommand(query, cnn);
+                Console.WriteLine(query);
+                reader = scm.ExecuteReader();
+                if (reader.Read())
+                {
+                    result = false;
+                }
+                else
+                {
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+
+            return result;
+        }
         public void insertOne(Schedule schedule)//Thêm phim
         {
             try

@@ -83,6 +83,7 @@ namespace QuanLyRapChieuPhimCGV
             this.txtPassword.Size = new System.Drawing.Size(209, 27);
             this.txtPassword.TabIndex = 16;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // txtId
             // 
@@ -90,6 +91,7 @@ namespace QuanLyRapChieuPhimCGV
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(209, 27);
             this.txtId.TabIndex = 15;
+            this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // fLogin
             // 

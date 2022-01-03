@@ -67,7 +67,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.dgvGroupFood.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGroupFood.Size = new System.Drawing.Size(1222, 557);
             this.dgvGroupFood.TabIndex = 65;
-            this.dgvGroupFood.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGroupFood_CellClick_1);
+            this.dgvGroupFood.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGroupFood_CellClick);
             // 
             // Column5
             // 

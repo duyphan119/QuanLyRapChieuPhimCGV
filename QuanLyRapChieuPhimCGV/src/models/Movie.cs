@@ -13,7 +13,6 @@ namespace QuanLyRapChieuPhimCGV.src.models
         public string description;
         public int ageLimit;
         public int length;
-        public Distributor distributor;
 
         public Movie() { }
     }

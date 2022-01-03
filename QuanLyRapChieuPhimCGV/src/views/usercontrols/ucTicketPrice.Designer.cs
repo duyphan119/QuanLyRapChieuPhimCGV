@@ -33,6 +33,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.cbEnd = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvManufacturer = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -43,11 +48,10 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.cbStart = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbObject = new System.Windows.Forms.ComboBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numPrice = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManufacturer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrice)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -62,6 +66,14 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // cbEnd
             // 
             this.cbEnd.FormattingEnabled = true;
+            this.cbEnd.Items.AddRange(new object[] {
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "CN"});
             this.cbEnd.Location = new System.Drawing.Point(318, 49);
             this.cbEnd.Name = "cbEnd";
             this.cbEnd.Size = new System.Drawing.Size(125, 25);
@@ -92,7 +104,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Column1,
             this.Column4,
             this.Column2,
-            this.Column5});
+            this.Column5,
+            this.Column3});
             this.dgvManufacturer.Location = new System.Drawing.Point(20, 122);
             this.dgvManufacturer.Name = "dgvManufacturer";
             this.dgvManufacturer.RowHeadersVisible = false;
@@ -101,93 +114,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.dgvManufacturer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvManufacturer.Size = new System.Drawing.Size(1222, 532);
             this.dgvManufacturer.TabIndex = 124;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(450, 85);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 31);
-            this.btnSave.TabIndex = 123;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(343, 85);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 31);
-            this.btnCancel.TabIndex = 122;
-            this.btnCancel.Text = "Huỷ";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(236, 85);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 31);
-            this.btnDelete.TabIndex = 121;
-            this.btnDelete.Text = "Xoá";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(127, 85);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 31);
-            this.btnEdit.TabIndex = 120;
-            this.btnEdit.Text = "Sửa";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(20, 85);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 31);
-            this.btnAdd.TabIndex = 119;
-            this.btnAdd.Text = "Thêm";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // cbId
-            // 
-            this.cbId.FormattingEnabled = true;
-            this.cbId.Location = new System.Drawing.Point(103, 18);
-            this.cbId.Name = "cbId";
-            this.cbId.Size = new System.Drawing.Size(125, 25);
-            this.cbId.TabIndex = 118;
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(20, 21);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(53, 17);
-            this.lblId.TabIndex = 117;
-            this.lblId.Text = "Mã Giá";
-            // 
-            // cbStart
-            // 
-            this.cbStart.FormattingEnabled = true;
-            this.cbStart.Location = new System.Drawing.Point(103, 49);
-            this.cbStart.Name = "cbStart";
-            this.cbStart.Size = new System.Drawing.Size(125, 25);
-            this.cbStart.TabIndex = 131;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(233, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 17);
-            this.label2.TabIndex = 133;
-            this.label2.Text = "Đối Tượng";
-            // 
-            // cbObject
-            // 
-            this.cbObject.FormattingEnabled = true;
-            this.cbObject.Location = new System.Drawing.Point(318, 18);
-            this.cbObject.Name = "cbObject";
-            this.cbObject.Size = new System.Drawing.Size(125, 25);
-            this.cbObject.TabIndex = 132;
             // 
             // Column1
             // 
@@ -217,9 +143,151 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Giá";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(450, 85);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 31);
+            this.btnSave.TabIndex = 123;
+            this.btnSave.Text = "Lưu";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(343, 85);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 31);
+            this.btnCancel.TabIndex = 122;
+            this.btnCancel.Text = "Huỷ";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(236, 85);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 31);
+            this.btnDelete.TabIndex = 121;
+            this.btnDelete.Text = "Xoá";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(127, 85);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 31);
+            this.btnEdit.TabIndex = 120;
+            this.btnEdit.Text = "Sửa";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(20, 85);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 31);
+            this.btnAdd.TabIndex = 119;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // cbId
+            // 
+            this.cbId.FormattingEnabled = true;
+            this.cbId.Location = new System.Drawing.Point(103, 18);
+            this.cbId.Name = "cbId";
+            this.cbId.Size = new System.Drawing.Size(125, 25);
+            this.cbId.TabIndex = 118;
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(20, 21);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(53, 17);
+            this.lblId.TabIndex = 117;
+            this.lblId.Text = "Mã Giá";
+            // 
+            // cbStart
+            // 
+            this.cbStart.FormattingEnabled = true;
+            this.cbStart.Items.AddRange(new object[] {
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "CN"});
+            this.cbStart.Location = new System.Drawing.Point(103, 49);
+            this.cbStart.Name = "cbStart";
+            this.cbStart.Size = new System.Drawing.Size(125, 25);
+            this.cbStart.TabIndex = 131;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(233, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 17);
+            this.label2.TabIndex = 133;
+            this.label2.Text = "Đối Tượng";
+            // 
+            // cbObject
+            // 
+            this.cbObject.FormattingEnabled = true;
+            this.cbObject.Items.AddRange(new object[] {
+            "Tất cả",
+            "Có thẻ U22",
+            "Trẻ em",
+            "Học sinh",
+            "Sinh viên",
+            "Người cao tuổi",
+            "Người lớn"});
+            this.cbObject.Location = new System.Drawing.Point(318, 18);
+            this.cbObject.Name = "cbObject";
+            this.cbObject.Size = new System.Drawing.Size(125, 25);
+            this.cbObject.TabIndex = 132;
+            // 
+            // numPrice
+            // 
+            this.numPrice.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numPrice.Location = new System.Drawing.Point(485, 18);
+            this.numPrice.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.numPrice.Name = "numPrice";
+            this.numPrice.Size = new System.Drawing.Size(129, 25);
+            this.numPrice.TabIndex = 135;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(449, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 17);
+            this.label4.TabIndex = 136;
+            this.label4.Text = "Giá";
+            // 
             // ucTicketPrice
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.numPrice);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbObject);
             this.Controls.Add(this.cbStart);
@@ -238,6 +306,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Name = "ucTicketPrice";
             this.Size = new System.Drawing.Size(1262, 673);
             ((System.ComponentModel.ISupportInitialize)(this.dgvManufacturer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPrice)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,10 +318,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.ComboBox cbEnd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvManufacturer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDelete;
@@ -263,5 +328,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.ComboBox cbStart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbObject;
+        private System.Windows.Forms.NumericUpDown numPrice;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }

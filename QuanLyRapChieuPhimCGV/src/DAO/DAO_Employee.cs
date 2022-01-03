@@ -87,6 +87,40 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             return employee;
         }
 
+        public Employee getByPhone(string phone)//Lấy nhân viên theo mã nhân viên
+        {
+            Employee employee = null;
+            try
+            {
+                cnn.Open();
+                string query = $"select manv, tennv, cccd, gioitinh, sdt, vitri, luong, matkhau, quyen from nhanvien where sdt = '{phone}'";
+                scm = new SqlCommand(query, cnn);
+                reader = scm.ExecuteReader();
+                while (reader.Read())
+                {
+                    employee = new Employee();
+                    employee.id = reader.GetString(0);
+                    employee.name = reader.GetString(1);
+                    employee.person_id = reader.GetString(2);
+                    employee.gender = (reader.GetBoolean(3) == true) ? "Nam" : "Nữ";
+                    employee.phone = reader.GetString(4);
+                    employee.position = reader.GetString(5);
+                    employee.salary = reader.GetDecimal(6);
+                    employee.password = reader.GetString(7);
+                    employee.permission = reader.GetInt32(8);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return employee;
+        }
+
         public void insertOne(Employee employee)//Thêm nhân viên
         {
             try
@@ -168,7 +202,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
         public string changePassword(Employee employee, string oldPassword, string newPassword, string confirmNewPassword)
         {
             string error = "";
-            if(employee.password == oldPassword)
+            if (employee.password != oldPassword)
             {
                 error = "Mật khẩu cũ không chính xác";
             }

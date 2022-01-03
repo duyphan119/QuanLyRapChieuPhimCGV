@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using QuanLyRapChieuPhimCGV.src.models;
 using System.Windows.Forms;
 using QuanLyRapChieuPhimCGV.src.DAO;
@@ -102,6 +96,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             }
             setEnabled(action == EDIT);
             cbId.Enabled = (action == EDIT);
+            cbId.Text = "";
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -174,11 +169,18 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         }
         public void addSchedule(Schedule schedule)
         {
-            dao_s.insertOne(schedule);
-            schedules.Add(schedule);
-            cbId.Items.Add(schedule.id);
-            addToDGV(schedule);
-            cbId.Text = dao_s.generateId();
+            if (dao_s.canInsertSchedule(schedule))
+            {
+                dao_s.insertOne(schedule);
+                schedules.Add(schedule);
+                cbId.Items.Add(schedule.id);
+                addToDGV(schedule);
+                cbId.Text = dao_s.generateId();
+            }
+            else
+            {
+                MessageBox.Show("Không thể đặt lịch này", "Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public void updateDGV(Schedule schedule)
         {
@@ -195,13 +197,20 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         }
         public void editSchedule(Schedule schedule)
         {
-            dao_s.updateOne(schedule);
-            int index = schedules.FindIndex(s => s.id == schedule.id);
-            if (index != -1)
+            if (dao_s.canInsertSchedule(schedule))
             {
-                schedules[index] = schedule;
+                dao_s.updateOne(schedule);
+                int index = schedules.FindIndex(s => s.id == schedule.id);
+                if (index != -1)
+                {
+                    schedules[index] = schedule;
+                }
+                updateDGV(schedule);
             }
-            updateDGV(schedule);
+            else
+            {
+                MessageBox.Show("Không thể đặt lịch này", "Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -237,6 +246,23 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             dtTime.Value = schedule.dateTime;
             cbRoom.Text = schedule.room.name;
             cbMovie.Text = schedule.movie.name;
+        }
+
+        private void dgvSchedule_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(action == EDIT)
+            {
+                int index = e.RowIndex;
+                if (index != -1)
+                {
+                    Schedule schedule = schedules.Find(s => s.id == dgvSchedule.Rows[index].Cells[0].Value.ToString());
+                    if (schedule != null)
+                    {
+                        setData(schedule);
+                        cbId.Text = schedule.id;
+                    }
+                }
+            }
         }
     }
 }

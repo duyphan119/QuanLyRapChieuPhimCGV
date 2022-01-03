@@ -249,14 +249,18 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
 
         private void dgvRoom_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
+           
             if (action == EDIT)
             {
-                Room room = rooms.Find(emp => emp.id == dgvRoom.Rows[index].Cells[0].Value.ToString());
-                if (room != null)
+                int index = e.RowIndex;
+                if (index != -1)
                 {
-                    cbId.Text = dgvRoom.Rows[index].Cells[0].Value.ToString();
-                    setData(room);
+                    Room room = rooms.Find(emp => emp.id == dgvRoom.Rows[index].Cells[0].Value.ToString());
+                    if (room != null)
+                    {
+                        cbId.Text = dgvRoom.Rows[index].Cells[0].Value.ToString();
+                        setData(room);
+                    }
                 }
             }
         }

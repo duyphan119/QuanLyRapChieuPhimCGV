@@ -26,7 +26,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             {
                 DAO_Card dao_c = new DAO_Card();
                 cnn.Open();
-                string query = "select makhach, sdt, email, ngaysinh, gioitinh, mathe from khachhang";
+                string query = "select makhach, sdt, email, ngaysinh, gioitinh, mathe, tongdiem from khachhang";
                 scm = new SqlCommand(query, cnn);
                 reader = scm.ExecuteReader();
                 while(reader.Read()){
@@ -37,6 +37,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                     customer.dayOfBirth = reader.GetDateTime(3);
                     customer.gender = (reader.GetBoolean(4) == true)?"Nam":"Nữ";
                     customer.card = dao_c.getById(reader.GetString(5));
+                    customer.totalPoint = (float)reader.GetDouble(6);
                     customers.Add(customer);
                 }
             }
@@ -51,14 +52,14 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             return customers;
         }
 
-        public Customer getById(string customerId)//Lấy khách hàng theo mã khách hàng
+        public Customer getByEmail(string email)//Lấy khách hàng theo email
         {
             Customer customer = null;
             try
             {
                 DAO_Card dao_c = new DAO_Card();
                 cnn.Open();
-                string query = $"select makhach, sdt, email, ngaysinh, gioitinh, mathe from khachang where makhach = '{customerId}'";
+                string query = $"select makhach, sdt, email, ngaysinh, gioitinh, mathe, tongdiem from khachhang where email = '{email}'";
                 scm = new SqlCommand(query, cnn);
                 reader = scm.ExecuteReader();
                 while (reader.Read())
@@ -70,6 +71,73 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                     customer.dayOfBirth = reader.GetDateTime(3);
                     customer.gender = (reader.GetBoolean(4) == true) ? "Nam" : "Nữ";
                     customer.card = dao_c.getById(reader.GetString(5));
+                    customer.totalPoint = (float)reader.GetDouble(6);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return customer;
+        }
+
+        public Customer getByPhone(string phone)//Lấy khách hàng theo sdt
+        {
+            Customer customer = null;
+            try
+            {
+                DAO_Card dao_c = new DAO_Card();
+                cnn.Open();
+                string query = $"select makhach, sdt, email, ngaysinh, gioitinh, mathe, tongdiem from khachhang where sdt = '{phone}'";
+                scm = new SqlCommand(query, cnn);
+                reader = scm.ExecuteReader();
+                while (reader.Read())
+                {
+                    customer = new Customer();
+                    customer.id = reader.GetString(0);
+                    customer.phone = reader.GetString(1);
+                    customer.email = reader.GetString(2);
+                    customer.dayOfBirth = reader.GetDateTime(3);
+                    customer.gender = (reader.GetBoolean(4) == true) ? "Nam" : "Nữ";
+                    customer.card = dao_c.getById(reader.GetString(5));
+                    customer.totalPoint = (float)reader.GetDouble(6);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return customer;
+        }
+
+        public Customer getById(string customerId)//Lấy khách hàng theo mã khách hàng
+        {
+            Customer customer = null;
+            try
+            {
+                DAO_Card dao_c = new DAO_Card();
+                cnn.Open();
+                string query = $"select makhach, sdt, email, ngaysinh, gioitinh, mathe, tongdiem from khachhang where makhach = '{customerId}'";
+                scm = new SqlCommand(query, cnn);
+                reader = scm.ExecuteReader();
+                while (reader.Read())
+                {
+                    customer = new Customer();
+                    customer.id = reader.GetString(0);
+                    customer.phone = reader.GetString(1);
+                    customer.email = reader.GetString(2);
+                    customer.dayOfBirth = reader.GetDateTime(3);
+                    customer.gender = (reader.GetBoolean(4) == true) ? "Nam" : "Nữ";
+                    customer.card = dao_c.getById(reader.GetString(5));
+                    customer.totalPoint = (float)reader.GetDouble(6);
                 }
             }
             catch (Exception ex)
@@ -88,9 +156,9 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             try
             {
                 cnn.Open();
-                string query = $@"insert into khachhang(makhach, sdt, email, gioitinh, ngaysinh, mathe)
+                string query = $@"insert into khachhang(makhach, sdt, email, gioitinh, ngaysinh, mathe, tongdiem)
                            values ('{customer.id}','{customer.phone}','{customer.email}',{(customer.gender == "Nam"?1:0)},
-                            '{customer.dayOfBirth.ToString("yyyy-MM-dd")}','{customer.card.id}')";
+                            '{customer.dayOfBirth.ToString("yyyy-MM-dd")}','{customer.card.id}', {customer.totalPoint})";
                 scm = new SqlCommand(query, cnn);
                 scm.ExecuteNonQuery();
             }
@@ -111,7 +179,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                 cnn.Open();
                 string query = $@"update khachhang set sdt = '{customer.phone}', email = '{customer.email}', 
                     gioitinh = {(customer.gender == "Nam" ? 1 : 0)}, mathe = '{customer.card.id}', 
-                    ngaysinh = '{customer.dayOfBirth.ToString("yyyy-MM-dd")}' where makhach = '{customer.id}'";
+                    ngaysinh = '{customer.dayOfBirth.ToString("yyyy-MM-dd")}', tongdiem = {customer.totalPoint} where makhach = '{customer.id}'";
                 scm = new SqlCommand(query, cnn);
                 scm.ExecuteNonQuery();
             }

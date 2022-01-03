@@ -16,10 +16,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
     {
         private DAO_Employee dao_e = new DAO_Employee();
         private Employee employee;
-        public fChangePassword(Employee emp)
+        private fHome preComponent;
+        public fChangePassword(fHome f, Employee emp)
         {
-            InitializeComponent();
+            preComponent = f;
             employee = emp; //Lấy thông tin nhân viên được truyền từ form trước
+            InitializeComponent();
         }
 
         private void btnChangePassword_Click(object sender, EventArgs e)
@@ -27,7 +29,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             string error = dao_e.changePassword(employee, txtOldPassword.Text, txtNewPassword.Text, txtConfirmNewPassword.Text);
             if(error == "")
             {
-                Close();
+                MessageBox.Show("Đổi mật khẩu thành công", "Thành công");
+                employee.password = txtNewPassword.Text;
+                preComponent.getNewPassword(employee);
             }
             else
             {

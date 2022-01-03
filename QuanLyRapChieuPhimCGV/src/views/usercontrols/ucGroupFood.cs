@@ -108,7 +108,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             }
         }
 
-        public void addEmployee(GroupFood groupFood)
+        public void addGroupFood(GroupFood groupFood)
         {
             dao_g.insertOne(groupFood);
             groupFoods.Add(groupFood);
@@ -148,10 +148,10 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         //Cập nhật nhân viên trong CSDL
         //Tìm vị trí nhân viên vừa cập nhật
         //Sửa datagridview
-        public void editEmployee(GroupFood groupFood)
+        public void editGroupFood(GroupFood groupFood)
         {
             dao_g.updateOne(groupFood);
-            int index = groupFoods.FindIndex(emp => emp.id == groupFood.id);
+            int index = groupFoods.FindIndex(gf => gf.id == groupFood.id);
             if (index != -1)
             {
                 groupFoods[index] = groupFood;
@@ -165,12 +165,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             {
                 if (action == ADD)
                 {
-                    addEmployee(groupFood);
+                    addGroupFood(groupFood);
                     addToDataGridView(groupFood);
                 }
                 if (action == EDIT)
                 {
-                    editEmployee(groupFood);
+                    editGroupFood(groupFood);
                 }
                 resetTextBox();
             }
@@ -180,7 +180,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         {
             if (cbId.SelectedIndex != -1)
             {
-                GroupFood groupFood = groupFoods.Find(emp => emp.id == cbId.Text);
+                GroupFood groupFood = groupFoods.Find(gf => gf.id == cbId.Text);
                 if (groupFood != null)
                 {
                     setData(groupFood);
@@ -199,7 +199,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                     if (answer == DialogResult.Yes)
                     {
                         dao_g.deleteById(dgvGroupFood.Rows[index].Cells[0].Value.ToString());
-                        int index_groupFood = groupFoods.FindIndex(emp => emp.id == dgvGroupFood.Rows[index].Cells[0].Value.ToString());
+                        int index_groupFood = groupFoods.FindIndex(gf => gf.id == dgvGroupFood.Rows[index].Cells[0].Value.ToString());
                         if (index_groupFood != -1)
                         {
                             groupFoods.RemoveAt(index_groupFood);
@@ -216,7 +216,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             int index = e.RowIndex;
             if (action == EDIT)
             {
-                GroupFood groupFood = groupFoods.Find(emp => emp.id == dgvGroupFood.Rows[index].Cells[0].Value.ToString());
+                GroupFood groupFood = groupFoods.Find(gf => gf.id == dgvGroupFood.Rows[index].Cells[0].Value.ToString());
                 if (groupFood != null)
                 {
                     cbId.Text = dgvGroupFood.Rows[index].Cells[0].Value.ToString();
@@ -228,20 +228,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private void btnCancel_Click(object sender, EventArgs e)
         {
             resetTextBox();
-        }
-
-        private void dgvGroupFood_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = e.RowIndex;
-            if (action == EDIT)
-            {
-                GroupFood groupFood = groupFoods.Find(emp => emp.id == dgvGroupFood.Rows[index].Cells[0].Value.ToString());
-                if (groupFood != null)
-                {
-                    cbId.Text = dgvGroupFood.Rows[index].Cells[0].Value.ToString();
-                    setData(groupFood);
-                }
-            }
         }
     }
 }

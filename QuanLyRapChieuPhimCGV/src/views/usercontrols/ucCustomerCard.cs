@@ -80,12 +80,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 float percentTicket = float.Parse(txtPercentTicket.Text);
                 if (txtPercentTicket.Text == "")
                 {
-                    error += "Chưa nhập % điểm khi mua vé\n";
+                    error += "Chưa nhập % điểm theo giá vé\n";
                 }
             }
             catch(Exception ex)
             {
-                error += "% điểm khi mua vé không hợp lệ\n";
+                error += "% điểm theo giá vé không hợp lệ\n";
                 Console.WriteLine(ex);
             }
             try
@@ -93,12 +93,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 float percentFood = float.Parse(txtPercentFood.Text);
                 if (txtPercentFood.Text == "")
                 {
-                    error += "Chưa nhập % điểm khi mua đồ ăn\n";
+                    error += "Chưa nhập % điểm theo giá hoá đơn\n";
                 }
             }
             catch (Exception ex)
             {
-                error += "% điểm khi mua đồ ăn không hợp lệ\n";
+                error += "% điểm theo giá hoá đơn không hợp lệ\n";
                 Console.WriteLine(ex);
             }
 
@@ -254,14 +254,17 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
 
         private void dgvCard_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
             if (action == EDIT)
             {
-                Card card = cards.Find(emp => emp.id == dgvCard.Rows[index].Cells[0].Value.ToString());
-                if (card != null)
+                int index = e.RowIndex;
+                if (index != -1)
                 {
-                    cbId.Text = dgvCard.Rows[index].Cells[0].Value.ToString();
-                    setData(card);
+                    Card card = cards.Find(emp => emp.id == dgvCard.Rows[index].Cells[0].Value.ToString());
+                    if (card != null)
+                    {
+                        cbId.Text = dgvCard.Rows[index].Cells[0].Value.ToString();
+                        setData(card);
+                    }
                 }
             }
         }

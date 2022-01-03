@@ -54,7 +54,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(236, 21);
+            this.label3.Location = new System.Drawing.Point(20, 83);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 17);
             this.label3.TabIndex = 108;
@@ -63,15 +63,16 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // cbMovie
             // 
             this.cbMovie.FormattingEnabled = true;
-            this.cbMovie.Location = new System.Drawing.Point(293, 18);
+            this.cbMovie.IntegralHeight = false;
+            this.cbMovie.Location = new System.Drawing.Point(103, 80);
             this.cbMovie.Name = "cbMovie";
-            this.cbMovie.Size = new System.Drawing.Size(125, 25);
+            this.cbMovie.Size = new System.Drawing.Size(342, 25);
             this.cbMovie.TabIndex = 107;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 52);
+            this.label1.Location = new System.Drawing.Point(237, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 17);
             this.label1.TabIndex = 105;
@@ -102,6 +103,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.dgvSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSchedule.Size = new System.Drawing.Size(1222, 496);
             this.dgvSchedule.TabIndex = 104;
+            this.dgvSchedule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedule_CellClick);
             // 
             // Column1
             // 
@@ -192,7 +194,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(236, 52);
+            this.label2.Location = new System.Drawing.Point(20, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 17);
             this.label2.TabIndex = 116;
@@ -201,7 +203,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // cbRoom
             // 
             this.cbRoom.FormattingEnabled = true;
-            this.cbRoom.Location = new System.Drawing.Point(293, 49);
+            this.cbRoom.Location = new System.Drawing.Point(103, 49);
             this.cbRoom.Name = "cbRoom";
             this.cbRoom.Size = new System.Drawing.Size(125, 25);
             this.cbRoom.TabIndex = 115;
@@ -210,7 +212,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             this.dtDate.CustomFormat = "dd/MM/yyyy";
             this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDate.Location = new System.Drawing.Point(103, 49);
+            this.dtDate.Location = new System.Drawing.Point(320, 18);
             this.dtDate.Name = "dtDate";
             this.dtDate.Size = new System.Drawing.Size(125, 25);
             this.dtDate.TabIndex = 114;
@@ -219,7 +221,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             this.dtTime.CustomFormat = "HH:mm";
             this.dtTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtTime.Location = new System.Drawing.Point(103, 80);
+            this.dtTime.Location = new System.Drawing.Point(320, 49);
             this.dtTime.Name = "dtTime";
             this.dtTime.ShowUpDown = true;
             this.dtTime.Size = new System.Drawing.Size(125, 25);
@@ -228,7 +230,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 83);
+            this.label4.Location = new System.Drawing.Point(237, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 17);
             this.label4.TabIndex = 117;

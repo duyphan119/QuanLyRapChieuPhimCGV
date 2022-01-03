@@ -32,6 +32,10 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvCard = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -43,10 +47,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtPercentTicket = new System.Windows.Forms.TextBox();
             this.txtPercentFood = new System.Windows.Forms.TextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCard)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,9 +55,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(217, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 17);
+            this.label2.Size = new System.Drawing.Size(186, 17);
             this.label2.TabIndex = 87;
-            this.label2.Text = "% Mua Đồ Ăn";
+            this.label2.Text = "% Điểm Theo Giá Hoá Đơn";
             // 
             // label1
             // 
@@ -94,6 +94,34 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.dgvCard.Size = new System.Drawing.Size(1222, 537);
             this.dgvCard.TabIndex = 83;
             this.dgvCard.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCard_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Mã Thẻ";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Tên Thẻ";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "% Mua Vé";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "% Mua Đồ Ăn";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // btnSave
             // 
@@ -159,9 +187,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.lblName.AutoSize = true;
             this.lblName.Location = new System.Drawing.Point(217, 21);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(73, 17);
+            this.lblName.Size = new System.Drawing.Size(144, 17);
             this.lblName.TabIndex = 76;
-            this.lblName.Text = "% Mua Vé";
+            this.lblName.Text = "% Điểm Theo Giá Vé";
             // 
             // lblId
             // 
@@ -181,45 +209,17 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // txtPercentTicket
             // 
-            this.txtPercentTicket.Location = new System.Drawing.Point(329, 18);
+            this.txtPercentTicket.Location = new System.Drawing.Point(409, 18);
             this.txtPercentTicket.Name = "txtPercentTicket";
             this.txtPercentTicket.Size = new System.Drawing.Size(118, 25);
             this.txtPercentTicket.TabIndex = 92;
             // 
             // txtPercentFood
             // 
-            this.txtPercentFood.Location = new System.Drawing.Point(329, 49);
+            this.txtPercentFood.Location = new System.Drawing.Point(409, 49);
             this.txtPercentFood.Name = "txtPercentFood";
             this.txtPercentFood.Size = new System.Drawing.Size(118, 25);
             this.txtPercentFood.TabIndex = 93;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Mã Thẻ";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Tên Thẻ";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "% Mua Vé";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "% Mua Đồ Ăn";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // ucCustomerCard
             // 

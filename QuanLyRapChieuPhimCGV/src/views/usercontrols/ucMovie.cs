@@ -22,7 +22,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private ucAdministration admin;
         private Employee employee;
         private DAO_Distributor dao_d = new DAO_Distributor();
-        private List<Distributor> distributors = new List<Distributor>();
+        private DAO_FormatMovie dao_fm = new DAO_FormatMovie();
+        //private List<Distributor> distributors = new List<Distributor>();
         private DAO_Movie dao_m = new DAO_Movie();
         private List<Movie> movies = new List<Movie>();
         private string pathImage = "";
@@ -33,12 +34,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             InitializeComponent();
             Dock = DockStyle.Fill;
 
-            distributors = dao_d.getAll();
+            //distributors = dao_d.getAll();
 
-            distributors.ForEach(distributor =>
-            {
-                cbDistributor.Items.Add(distributor.name);
-            });
+            //distributors.ForEach(distributor =>
+            //{
+            //    cbDistributor.Items.Add(distributor.name);
+            //});
 
             movies = dao_m.getAll();
             cbId.Items.Clear();
@@ -59,18 +60,19 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 movie.id,
                 movie.name,
                 movie.producer,
-                "",
+                dao_fm.getCategories(movie),
                 movie.dateStart.ToString("dd-MM-yyyy"),
                 movie.length,
                 movie.language,
-                movie.ageLimit,
-                movie.distributor.name
+                movie.ageLimit
+                //movie.distributor.name
             });
         }
 
         public void setEnabled(bool status)
         {
-            txtName.Enabled = dateStart.Enabled = txtDescription.Enabled = btnSelectCategoryMovie.Enabled = btnSelectImage.Enabled = numAge.Enabled = numLength.Enabled = txtProducer.Enabled = txtLanguage.Enabled = cbDistributor.Enabled = status;
+            //cbDistributor.Enabled = status;
+            txtName.Enabled = dateStart.Enabled = txtDescription.Enabled = btnSelectImage.Enabled = numAge.Enabled = numLength.Enabled = txtProducer.Enabled = txtLanguage.Enabled = status;
         }
 
         public void resetTextBox()
@@ -81,15 +83,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             pathImage = "";
 
         }
-
-
-
-        private void btnSelectCategoryMovie_Click(object sender, EventArgs e)
-        {
-            new fSelectCategory().Visible = true;
-        }
-
-
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -158,10 +151,10 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         {
             string error = "";
 
-            if (cbDistributor.Text == "")
-            {
-                error += "Chưa chọn nhà phát hành\n";
-            }
+            //if (cbDistributor.Text == "")
+            //{
+            //    error += "Chưa chọn nhà phát hành\n";
+            //}
             if (cbId.Text == "")
             {
                 error += "Chưa chọn mã phim\n";
@@ -205,7 +198,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                     dateStart = dateStart.Value,
                     language = txtLanguage.Text,
                     description = txtDescription.Text,
-                    distributor = distributors.Find(distributor=>distributor.name == cbDistributor.Text),
+                    //distributor = distributors.Find(distributor=>distributor.name == cbDistributor.Text),
                     ageLimit = Convert.ToInt32(numAge.Value),
                     length = Convert.ToInt32(numLength.Value)
                 };
@@ -233,12 +226,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 {
                     dgvMovie.Rows[i].Cells[1].Value = movie.name;
                     dgvMovie.Rows[i].Cells[2].Value = movie.producer;
-                    dgvMovie.Rows[i].Cells[3].Value = "";
+                    dgvMovie.Rows[i].Cells[3].Value = dao_fm.getCategories(movie);
                     dgvMovie.Rows[i].Cells[4].Value = movie.dateStart.ToString("dd-MM-yyyy");
                     dgvMovie.Rows[i].Cells[5].Value = movie.length;
                     dgvMovie.Rows[i].Cells[6].Value = movie.language;
                     dgvMovie.Rows[i].Cells[7].Value = movie.ageLimit;
-                    dgvMovie.Rows[i].Cells[8].Value = movie.distributor.name;
+                    //dgvMovie.Rows[i].Cells[8].Value = movie.distributor.name;
                     break;
                 }
             }
@@ -271,7 +264,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         }
         public void setData(Movie movie)
         {
-            cbDistributor.Text = movie.distributor.name;
+            //cbDistributor.Text = movie.distributor.name;
             txtName.Text = movie.name;
             txtLanguage.Text = movie.language;
             txtProducer.Text = movie.producer;
@@ -312,6 +305,23 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 {
                     Console.WriteLine(ex);
                     MessageBox.Show("File không hợp lệ");
+                }
+            }
+        }
+
+        private void dgvMovie_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(action == EDIT)
+            {
+                int index = e.RowIndex;
+                if (index != -1)
+                {
+                    Movie movie = movies.Find(mov => mov.id == dgvMovie.Rows[index].Cells[0].Value.ToString());
+                    if (movie != null)
+                    {
+                        setData(movie);
+                        cbId.Text = movie.id;
+                    }
                 }
             }
         }

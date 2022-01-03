@@ -30,6 +30,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private void InitializeComponent()
         {
             this.dgvChair = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -41,18 +46,10 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.numRow = new System.Windows.Forms.NumericUpDown();
             this.numColumn = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cbRoom = new System.Windows.Forms.ComboBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChair)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numColumn)).BeginInit();
@@ -75,8 +72,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Column4,
             this.Column5,
             this.Column2,
-            this.Column6,
-            this.Column3});
+            this.Column6});
             this.dgvChair.Location = new System.Drawing.Point(20, 154);
             this.dgvChair.Name = "dgvChair";
             this.dgvChair.RowHeadersVisible = false;
@@ -85,6 +81,42 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.dgvChair.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvChair.Size = new System.Drawing.Size(1222, 500);
             this.dgvChair.TabIndex = 67;
+            this.dgvChair.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChair_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Mã Ghế";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Hàng";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Cột";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Loại Ghế";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Rạp";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // btnDelete
             // 
@@ -129,7 +161,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(215, 54);
+            this.lblName.Location = new System.Drawing.Point(215, 20);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(42, 17);
             this.lblName.TabIndex = 57;
@@ -165,14 +197,14 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // numRow
             // 
-            this.numRow.Location = new System.Drawing.Point(298, 52);
+            this.numRow.Location = new System.Drawing.Point(298, 18);
             this.numRow.Name = "numRow";
             this.numRow.Size = new System.Drawing.Size(108, 25);
             this.numRow.TabIndex = 70;
             // 
             // numColumn
             // 
-            this.numColumn.Location = new System.Drawing.Point(298, 83);
+            this.numColumn.Location = new System.Drawing.Point(298, 49);
             this.numColumn.Name = "numColumn";
             this.numColumn.Size = new System.Drawing.Size(108, 25);
             this.numColumn.TabIndex = 72;
@@ -180,32 +212,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(215, 85);
+            this.label2.Location = new System.Drawing.Point(215, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 17);
             this.label2.TabIndex = 71;
             this.label2.Text = "Cột";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(215, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 17);
-            this.label3.TabIndex = 74;
-            this.label3.Text = "Trạng Thái";
-            // 
-            // cbStatus
-            // 
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Items.AddRange(new object[] {
-            "Đã đặt",
-            "Chưa đặt"});
-            this.cbStatus.Location = new System.Drawing.Point(298, 18);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(108, 25);
-            this.cbStatus.TabIndex = 73;
-            this.cbStatus.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbStatus_KeyPress);
             // 
             // btnCancel
             // 
@@ -246,56 +257,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.cbRoom.SelectedIndexChanged += new System.EventHandler(this.cbRoom_SelectedIndexChanged);
             this.cbRoom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbRoom_KeyPress);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Mã Ghế";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Hàng";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Cột";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Loại Ghế";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Rạp";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Trạng Thái";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
             // ucChair
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cbRoom);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.numColumn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numRow);
@@ -335,8 +302,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.NumericUpDown numRow;
         private System.Windows.Forms.NumericUpDown numColumn;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label4;
@@ -346,6 +311,5 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }

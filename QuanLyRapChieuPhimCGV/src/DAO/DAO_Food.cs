@@ -46,7 +46,36 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             }
             return foods;
         }
-
+        public List<Food> getAllByGroup(GroupFood groupFood)//Lấy tất cả danh sách đồ ăn theo nhóm
+        {
+            List<Food> foods = new List<Food>();
+            try
+            {
+                DAO_GroupFood dao_g = new DAO_GroupFood();
+                cnn.Open();
+                string query = $"select mada, ten, giaban, manhom from doan where manhom = '{groupFood.id}'";
+                scm = new SqlCommand(query, cnn);
+                reader = scm.ExecuteReader();
+                while (reader.Read())
+                {
+                    Food food = new Food();
+                    food.id = reader.GetString(0);
+                    food.name = reader.GetString(1);
+                    food.price = reader.GetDecimal(2);
+                    food.groupFood = dao_g.getById(reader.GetString(3));
+                    foods.Add(food);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return foods;
+        }
         public Food getById(string foodId)//Lấy đồ ăn theo mã đồ ăn
         {
             Food food = null;

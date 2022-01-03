@@ -11,7 +11,6 @@ namespace QuanLyRapChieuPhimCGV.src.models
         public string id;
         public int row;
         public int column;
-        public bool status;
         public ChairType type;
         public Room room;
 

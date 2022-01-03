@@ -10,6 +10,7 @@ namespace QuanLyRapChieuPhimCGV.src.models
         public string gender;
         public DateTime dayOfBirth;
         public Card card;
+        public float totalPoint;
 
         public Customer() { }
     }

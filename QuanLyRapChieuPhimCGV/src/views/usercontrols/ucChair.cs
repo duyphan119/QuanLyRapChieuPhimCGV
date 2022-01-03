@@ -61,13 +61,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 chair.row,
                 chair.column,
                 chair.type.name,
-                chair.room.name,
-                chair.status == true?"Chưa đặt":"Đã đặt"
+                chair.room.name
             });
         }
         public void setEnabled(bool status)
         {
-            cbRoom.Enabled = cbStatus.Enabled = cbType.Enabled = numRow.Enabled = numColumn.Enabled = status;
+            cbRoom.Enabled = cbType.Enabled = numRow.Enabled = numColumn.Enabled = status;
         }
 
         public void resetTextBox()
@@ -154,11 +153,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             {
                 error += "Chưa chọn mã ghế\n";
             }
-            if (cbStatus.Text == "")
-            {
-                error += "Chưa chọn trạng thái\n";
-            }
-
             Room r = rooms.Find(room => room.name == cbRoom.Text);
             if (r != null)
             {
@@ -188,7 +182,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 Chair chair = new Chair()
                 {
                     id = cbId.Text,
-                    status = cbStatus.SelectedIndex == 0 ? false:true,
                     row = Convert.ToInt32(numRow.Value),
                     column = Convert.ToInt32(numColumn.Value),
                     room = rooms.Find(room => room.name == cbRoom.Text),
@@ -220,7 +213,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                     dgvChair.Rows[i].Cells[2].Value = chair.column;
                     dgvChair.Rows[i].Cells[3].Value = chair.type.name;
                     dgvChair.Rows[i].Cells[4].Value = chair.room.name;
-                    dgvChair.Rows[i].Cells[5].Value = chair.status == true ? "Chưa đặt" : "Đã đặt";
                     break;
                 }
             }
@@ -247,15 +239,15 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 if(action == EDIT)
                 {
                     editChair(chair);
+                    resetTextBox();
                 }
-                resetTextBox();
+                //resetTextBox();
             }
         }
         public void setData(Chair chair)
         {
             cbRoom.Text = chair.room.name;
             cbType.Text = chair.type.name;
-            cbStatus.Text = chair.status == false ? "Đã đặt" : "Chưa đặt";
             numRow.Value = chair.row;
             numColumn.Value = chair.column;
         }
@@ -354,9 +346,21 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             e.Handled = true;
         }
 
-        private void cbStatus_KeyPress(object sender, KeyPressEventArgs e)
+        private void dgvChair_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            e.Handled = true;
+            if (action == EDIT)
+            {
+                int index = e.RowIndex;
+                if (index != -1)
+                {
+                    Chair chair = chairs.Find(s => s.id == dgvChair.Rows[index].Cells[0].Value.ToString());
+                    if (chair != null)
+                    {
+                        setData(chair);
+                        cbId.Text = chair.id;
+                    }
+                }
+            }
         }
     }
 }
