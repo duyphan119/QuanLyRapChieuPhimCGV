@@ -156,7 +156,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             {
                 cnn.Open();
                 string query = $@"SELECT *
-                                    FROM LICHCHIEU WHERE MALICH != '{schedule.id}' AND MAPHIM = '{schedule.movie.id}' AND MAPHONG = '{schedule.room.id}' AND 
+                                    FROM LICHCHIEU WHERE MALICH != '{schedule.id}' AND MAPHONG = '{schedule.room.id}' AND
                                     datediff(minute, '{schedule.dateTime}', NGAYCHIEU) < {schedule.movie.length + 30}  AND 
                                     datediff(minute, '{schedule.dateTime}', NGAYCHIEU) > -{schedule.movie.length + 30}";
                 scm = new SqlCommand(query, cnn);
@@ -169,6 +169,11 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                 else
                 {
                     result = true;
+                }
+                Console.WriteLine(DateTime.Compare(DateTime.Now, schedule.dateTime).ToString());
+                if(DateTime.Compare(DateTime.Now, schedule.dateTime) > 0)
+                {
+                    result = false;
                 }
             }
             catch (Exception ex)

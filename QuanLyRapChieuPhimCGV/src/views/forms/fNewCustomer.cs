@@ -92,6 +92,10 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
                     Console.WriteLine(ex);
                 }
             }
+            if (age < 18)
+            {
+                error += "Tuổi không được nhỏ hơn 18\n";
+            }
             return error;
         }
         public Customer getData()//Lấy thông tin nhân viên từ giao diện

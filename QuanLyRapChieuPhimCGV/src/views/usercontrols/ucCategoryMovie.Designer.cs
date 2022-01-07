@@ -185,6 +185,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dgvMovie);
             this.groupBox1.Controls.Add(this.listCategories);
             this.groupBox1.Location = new System.Drawing.Point(429, 18);

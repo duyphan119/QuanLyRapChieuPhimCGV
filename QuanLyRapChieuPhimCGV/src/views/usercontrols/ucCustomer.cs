@@ -82,7 +82,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             int age = today.Year - dateTime.Value.Year;
             if (dateTime.Value > today.AddYears(-age))
                 age--;
- 
+            
             
             if (cbId.Text == "")
             {
@@ -128,8 +128,15 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                     Console.WriteLine(ex);
                 }
             }
+            if(age < 18)
+            {
+                error += "Tuổi không được nhỏ hơn 18\n";
+            }
             return error;
         }
+
+
+
 
         public Customer getData()//Lấy thông tin nhân viên từ giao diện
         {

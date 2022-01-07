@@ -209,6 +209,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             {
                 if (numPoint.Value > 0)//Trả bằng điểm
                 {
+                    if(numPoint.Value*1000 > ticket.price.price)
+                    {
+                        numPoint.Maximum = ticket.price.price / 1000;
+                        numPoint.Value = ticket.price.price / 1000;
+                    }
                     curCustomer.totalPoint -= (float)numPoint.Value;
                     if (curCustomer.totalPoint < 0)
                     {
@@ -374,18 +379,19 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             {
                 rbtnNo.Checked = true;
                 txtCustomer.Text = "";
+                numPoint.Maximum = 0;
             }
             else
             {
                 rbtnYes.Checked = true;
                 txtCustomer.Text = curCustomer.id;
+                numPoint.Maximum = (decimal)ticket.customer.totalPoint;
             }
             txtMovie.Text = curSchedule.movie.name;
             txtRoomName.Text = curSchedule.room.name;
             txtChairName.Text = dao_ch.getChairName(curChair);
             txtTicketPrice.Text = ticket.price.price.ToString("#,##");
             txtDateTime.Text = curSchedule.dateTime.ToString("dd/MM/yyyy HH:mm");
-            numPoint.Maximum = (decimal)ticket.customer.totalPoint;
         }
 
         public void reset()

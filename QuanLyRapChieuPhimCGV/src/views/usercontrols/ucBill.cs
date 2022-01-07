@@ -167,6 +167,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             {
                 if (numPoint.Value > 0)//Trả bằng điểm
                 {
+                    if (numPoint.Value * 1000 > bill.totalPrice)
+                    {
+                        numPoint.Maximum = bill.totalPrice / 1000;
+                        numPoint.Value = bill.totalPrice / 1000;
+                    }
                     curCustomer.totalPoint -= (float)numPoint.Value;
                     if (curCustomer.totalPoint < 0)
                     {
@@ -317,16 +322,17 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             {
                 rbtnNo.Checked = true;
                 txtCustomer.Text = "";
+                numPoint.Maximum = 0;
             }
             else
             {
                 rbtnYes.Checked = true;
                 txtCustomer.Text = curCustomer.id;
+                numPoint.Maximum = (decimal)bill.customer.totalPoint;
             }
             billDetails = dao_bd.getAll(bill);
             dateTime.Value = bill.date;
             txtPrice.Text = bill.totalPrice.ToString("#,##");
-            numPoint.Maximum = (decimal)bill.customer.totalPoint;
         }
         private void dgvBill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
