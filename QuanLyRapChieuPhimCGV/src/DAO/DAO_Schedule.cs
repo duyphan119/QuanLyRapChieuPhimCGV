@@ -169,11 +169,14 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                 else
                 {
                     result = true;
-                }
-                Console.WriteLine(DateTime.Compare(DateTime.Now, schedule.dateTime).ToString());
-                if(DateTime.Compare(DateTime.Now, schedule.dateTime) > 0)
-                {
-                    result = false;
+                    DateTime now = DateTime.Now;
+                    DateTime d1 = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, 0);
+                    DateTime d2 = new DateTime(schedule.dateTime.Year, schedule.dateTime.Month, schedule.dateTime.Day, schedule.dateTime.Hour, schedule.dateTime.Minute, 0);
+                    Console.WriteLine(DateTime.Compare(d1, d2));
+                    if (DateTime.Compare(d1, d2) > 0)
+                    {
+                        result = false;
+                    }
                 }
             }
             catch (Exception ex)
