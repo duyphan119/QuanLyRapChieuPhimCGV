@@ -9,6 +9,7 @@ namespace QuanLyRapChieuPhimCGV.src.models
         public Employee employee;
         public Customer customer;
         public decimal totalPrice;
+        public int point;
 
         public Bill() { }
     }

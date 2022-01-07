@@ -29,16 +29,10 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbScreen = new System.Windows.Forms.ComboBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvRoom = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -50,26 +44,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtTotalRows = new System.Windows.Forms.TextBox();
             this.txtTotalColumns = new System.Windows.Forms.TextBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoom)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 83);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 17);
-            this.label3.TabIndex = 90;
-            this.label3.Text = "Màn Hình";
-            // 
-            // cbScreen
-            // 
-            this.cbScreen.FormattingEnabled = true;
-            this.cbScreen.Location = new System.Drawing.Point(105, 80);
-            this.cbScreen.Name = "cbScreen";
-            this.cbScreen.Size = new System.Drawing.Size(106, 25);
-            this.cbScreen.TabIndex = 89;
-            this.cbScreen.SelectedIndexChanged += new System.EventHandler(this.cbScreen_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -100,61 +80,35 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvRoom.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvRoom.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRoom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column4,
-            this.Column5,
-            this.Column3});
-            this.dgvRoom.Location = new System.Drawing.Point(20, 154);
+            this.Column5});
+            this.dgvRoom.EnableHeadersVisualStyles = false;
+            this.dgvRoom.Location = new System.Drawing.Point(20, 119);
             this.dgvRoom.Name = "dgvRoom";
             this.dgvRoom.RowHeadersVisible = false;
             this.dgvRoom.RowHeadersWidth = 51;
             this.dgvRoom.RowTemplate.Height = 24;
             this.dgvRoom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRoom.Size = new System.Drawing.Size(1222, 500);
+            this.dgvRoom.Size = new System.Drawing.Size(1222, 535);
             this.dgvRoom.TabIndex = 83;
             this.dgvRoom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRoom_CellClick);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Mã Phòng";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Tên Phòng";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Tổng Số Hàng";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Tổng Số Cột";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Màn Hình";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(450, 117);
+            this.btnSave.Location = new System.Drawing.Point(448, 82);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 31);
             this.btnSave.TabIndex = 82;
@@ -164,7 +118,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(343, 117);
+            this.btnCancel.Location = new System.Drawing.Point(341, 82);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 31);
             this.btnCancel.TabIndex = 81;
@@ -174,7 +128,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(236, 117);
+            this.btnDelete.Location = new System.Drawing.Point(234, 82);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 31);
             this.btnDelete.TabIndex = 80;
@@ -184,7 +138,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(127, 117);
+            this.btnEdit.Location = new System.Drawing.Point(125, 82);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 31);
             this.btnEdit.TabIndex = 79;
@@ -194,7 +148,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(20, 117);
+            this.btnAdd.Location = new System.Drawing.Point(18, 82);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 31);
             this.btnAdd.TabIndex = 78;
@@ -205,11 +159,13 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // cbId
             // 
             this.cbId.FormattingEnabled = true;
+            this.cbId.IntegralHeight = false;
             this.cbId.Location = new System.Drawing.Point(105, 18);
             this.cbId.Name = "cbId";
             this.cbId.Size = new System.Drawing.Size(106, 25);
             this.cbId.TabIndex = 77;
             this.cbId.SelectedIndexChanged += new System.EventHandler(this.cbId_SelectedIndexChanged);
+            this.cbId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbId_KeyPress);
             // 
             // lblName
             // 
@@ -250,14 +206,40 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.txtTotalColumns.Size = new System.Drawing.Size(94, 25);
             this.txtTotalColumns.TabIndex = 93;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Mã Phòng";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Tên Phòng";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Tổng Số Hàng";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Tổng Số Cột";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
             // ucRoom
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.txtTotalColumns);
             this.Controls.Add(this.txtTotalRows);
             this.Controls.Add(this.txtName);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cbScreen);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvRoom);
@@ -279,17 +261,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbScreen;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvRoom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDelete;
@@ -301,5 +275,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtTotalRows;
         private System.Windows.Forms.TextBox txtTotalColumns;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

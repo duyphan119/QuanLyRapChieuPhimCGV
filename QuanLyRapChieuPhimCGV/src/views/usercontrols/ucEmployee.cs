@@ -46,8 +46,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 employee.phone, 
                 employee.salary, 
                 employee.password, 
-                employee.permission
-            });
+                (employee.permission == 0)?"USER_TICKET":((employee.permission == 1) ? "USER_FOOD":"ADMIN")
+        });
         }
 
         public void setEnabled(bool status)
@@ -109,6 +109,14 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 try
                 {
                     decimal phone = Convert.ToDecimal(txtPersonID.Text);
+                    if(action == ADD && employees.Find(em=>em.person_id == txtPersonID.Text) != null)
+                    {
+                        error += "Không được trùng số CMND/CCCD\n";
+                    }
+                    if (action == EDIT && cbId.Text != "" && employees.Find(em => em.id != cbId.Text && em.person_id == txtPersonID.Text) != null)
+                    {
+                        error += "Không được trùng số CMND/CCCD\n";
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -126,7 +134,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 {
                     decimal phone = Convert.ToDecimal(txtPhone.Text);
 
-                    if (dao_e.getByPhone(txtPhone.Text) != null)
+                    if (action == ADD && dao_e.getByPhone(txtPhone.Text) != null)
+                    {
+                        error += "Số điện thoại đã tồn tại\n";
+                    }
+                    if(action == EDIT && cbId.Text!=null && employees.Find(employee=>employee.id != cbId.Text && employee.phone == txtPhone.Text)!=null)
                     {
                         error += "Số điện thoại đã tồn tại\n";
                     }
@@ -218,7 +230,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                     dgvEmployee.Rows[i].Cells[5].Value = employee.phone;
                     dgvEmployee.Rows[i].Cells[6].Value = employee.salary;
                     dgvEmployee.Rows[i].Cells[7].Value = employee.password;
-                    dgvEmployee.Rows[i].Cells[8].Value = employee.permission;
+                    dgvEmployee.Rows[i].Cells[8].Value = (employee.permission == 0)?"USER_TICKET":((employee.permission == 1) ? "USER_FOOD":"ADMIN");
                 }
             }
         }
@@ -301,10 +313,15 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             }
         }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            resetTextBox();
+        }
+
         private void dgvEmployee_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            if(action == EDIT)
+            if (action == EDIT)
             {
                 Employee employee = employees.Find(emp => emp.id == dgvEmployee.Rows[index].Cells[0].Value.ToString());
                 if (employee != null)
@@ -315,9 +332,19 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void cbId_KeyPress(object sender, KeyPressEventArgs e)
         {
-            resetTextBox();
+            e.Handled = true;
+        }
+
+        private void cbPermision_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cbPosition_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

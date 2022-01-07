@@ -114,6 +114,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.dgvManufacturer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvManufacturer.Size = new System.Drawing.Size(1222, 532);
             this.dgvManufacturer.TabIndex = 124;
+            this.dgvManufacturer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvManufacturer_CellClick);
             // 
             // Column1
             // 
@@ -206,6 +207,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.cbId.Name = "cbId";
             this.cbId.Size = new System.Drawing.Size(125, 25);
             this.cbId.TabIndex = 118;
+            this.cbId.SelectedIndexChanged += new System.EventHandler(this.cbId_SelectedIndexChanged);
             // 
             // lblId
             // 
@@ -251,7 +253,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             "Học sinh",
             "Sinh viên",
             "Người cao tuổi",
-            "Người lớn"});
+            "Người lớn",
+            "SweetBox"});
             this.cbObject.Location = new System.Drawing.Point(318, 18);
             this.cbObject.Name = "cbObject";
             this.cbObject.Size = new System.Drawing.Size(125, 25);

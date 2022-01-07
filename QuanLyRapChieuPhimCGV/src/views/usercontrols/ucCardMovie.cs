@@ -10,7 +10,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
 {
     public partial class ucCardMovie : UserControl
     {
-        private fSelectMovie preComponent;
+        private fSelectSchedule preComponent;
         private Movie movie;
         private List<Schedule> schedules = new List<Schedule>();
         private DAO_Schedule dao_s = new DAO_Schedule();
@@ -20,7 +20,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         {
             InitializeComponent();
         }
-        public ucCardMovie(fSelectMovie f, Movie m, DateTime dt)
+        public ucCardMovie(fSelectSchedule f, Movie m, DateTime dt)
         {
             date = dt;
             preComponent = f;
@@ -34,11 +34,15 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 schedules = dao_s.getAllByMovieCanWatch(movie);
                 schedules.ForEach(schedule =>
                 {
-                    if (schedule.dateTime.Year == date.Year && schedule.dateTime.Month == date.Month && schedule.dateTime.Day == date.Day)
+                    if(DateTime.Compare(schedule.dateTime, date) >= 0)
                     {
                         Button btnTime = new Button();
-                        btnTime.Size = new Size(56, 26);
-                        btnTime.Text = $"{schedule.dateTime.ToString("HH:mm")}";
+                        btnTime.AutoSize = true;
+                        btnTime.Text = $"{schedule.dateTime.ToString("dd/MM/yyyy HH:mm")}";
+                        btnTime.Cursor = Cursors.Hand;
+                        btnTime.BackColor = Color.FromArgb(187, 187, 251);
+                        btnTime.FlatAppearance.BorderSize = 0;
+                        btnTime.FlatStyle = FlatStyle.Flat;
                         btnTime.Click += new EventHandler(selectTime);
                         flowLayoutPanel1.Controls.Add(btnTime);
                     }
@@ -54,7 +58,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private void btnSelect_Click(object sender, EventArgs e)
         {
             preComponent.getTime(movie, time);
-            preComponent.Close();
         }
     }
 }

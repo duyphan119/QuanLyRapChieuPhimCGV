@@ -21,7 +21,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private string action = "";
         private ucAdministration admin;
         private Employee employee;
-        private DAO_Distributor dao_d = new DAO_Distributor();
         private DAO_FormatMovie dao_fm = new DAO_FormatMovie();
         //private List<Distributor> distributors = new List<Distributor>();
         private DAO_Movie dao_m = new DAO_Movie();

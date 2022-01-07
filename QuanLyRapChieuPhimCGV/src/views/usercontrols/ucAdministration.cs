@@ -112,7 +112,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
 
         private void btnDistributorItem_Click(object sender, EventArgs e)
         {
-            Parent.Controls.Add(new ucDistributor(this, employee));
+            Parent.Controls.Add(new ucReportStatistic());
             Parent.Controls.Remove(this);
         }
     }

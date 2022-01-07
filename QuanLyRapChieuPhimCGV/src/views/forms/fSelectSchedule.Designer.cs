@@ -1,7 +1,7 @@
 ﻿
 namespace QuanLyRapChieuPhimCGV.src.views.forms
 {
-    partial class fSelectMovie
+    partial class fSelectSchedule
     {
         /// <summary>
         /// Required designer variable.
@@ -29,39 +29,30 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fSelectMovie));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fSelectSchedule));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.dtDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 43);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1056, 450);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1571, 782);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // dtDate
-            // 
-            this.dtDate.CustomFormat = "dd/MM/yyyy";
-            this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDate.Location = new System.Drawing.Point(12, 12);
-            this.dtDate.Name = "dtDate";
-            this.dtDate.Size = new System.Drawing.Size(122, 25);
-            this.dtDate.TabIndex = 0;
-            this.dtDate.ValueChanged += new System.EventHandler(this.dtDate_ValueChanged);
-            // 
-            // fSelectMovie
+            // fSelectSchedule
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1080, 505);
-            this.Controls.Add(this.dtDate);
+            this.ClientSize = new System.Drawing.Size(1571, 782);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "fSelectMovie";
+            this.Name = "fSelectSchedule";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chọn phim";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
@@ -69,6 +60,5 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.DateTimePicker dtDate;
     }
 }

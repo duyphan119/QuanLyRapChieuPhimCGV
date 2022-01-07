@@ -227,7 +227,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             try
             {
                 cnn.Open();
-                string query = $@"delete from lichchieu where malich = '{scheduleId}'";
+                string query = $@"DELETE FROM VE WHERE MALICH = '{scheduleId}';delete from lichchieu where malich = '{scheduleId}'";
                 scm = new SqlCommand(query, cnn);
                 scm.ExecuteNonQuery();
             }

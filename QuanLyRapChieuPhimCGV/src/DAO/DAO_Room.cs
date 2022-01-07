@@ -23,7 +23,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             {
                 DAO_Screen dao_s = new DAO_Screen();
                 cnn.Open();
-                string query = "select maphong, tenphong, tongsohang, tongsocot, mamanhinh from phongchieu";
+                string query = "select maphong, tenphong, tongsohang, tongsocot from phongchieu";
                 scm = new SqlCommand(query, cnn);
                 reader = scm.ExecuteReader();
                 while (reader.Read())
@@ -33,7 +33,6 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                     room.name = reader.GetString(1);
                     room.totalRows = reader.GetInt32(2);
                     room.totalColumns = reader.GetInt32(3);
-                    room.screen = dao_s.getById(reader.GetString(4));
                     rooms.Add(room);
                 }
             }
@@ -55,7 +54,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             {
                 DAO_Screen dao_s = new DAO_Screen();
                 cnn.Open();
-                string query = $"select maphong, tenphong, tongsohang, tongsocot, mamanhinh from phongchieu where maphong = '{roomId}'";
+                string query = $"select maphong, tenphong, tongsohang, tongsocot from phongchieu where maphong = '{roomId}'";
                 scm = new SqlCommand(query, cnn);
                 reader = scm.ExecuteReader();
                 while (reader.Read())
@@ -65,7 +64,6 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                     room.name = reader.GetString(1);
                     room.totalRows = reader.GetInt32(2);
                     room.totalColumns = reader.GetInt32(3);
-                    room.screen = dao_s.getById(reader.GetString(4));
                 }
             }
             catch (Exception ex)
@@ -84,8 +82,8 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             try
             {
                 cnn.Open();
-                string query = $@"insert into phongchieu(maphong, tenphong, tongsohang, tongsocot, mamanhinh)
-                           values ('{room.id}',N'{room.name}',{room.totalRows}, {room.totalColumns}, '{room.screen.id}')";
+                string query = $@"insert into phongchieu(maphong, tenphong, tongsohang, tongsocot)
+                           values ('{room.id}',N'{room.name}',{room.totalRows}, {room.totalColumns})";
                 scm = new SqlCommand(query, cnn);
                 scm.ExecuteNonQuery();
             }
@@ -98,14 +96,40 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                 cnn.Close();
             }
         }
+        public bool isAllowedUpdate(Room room)
+        {
+            bool result = 
+            try
+            {
+                DAO_Screen dao_s = new DAO_Screen();
+                cnn.Open();
+                string query = $"SELECT COUNT(MAGHE) FROM GHE WHERE (VITRICOT > 20 OR VITRIHANG > 11) AND MAPHONG = '{room.id}'";
+                scm = new SqlCommand(query, cnn);
+                reader = scm.ExecuteReader();
+                if (reader.Read())
+                {
+                   if(reader.GetInt32(0) > 0)
+                    {
 
+                    } 
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+        }
         public void updateOne(Room room)//Cập nhật phòng chiếu
         {
             try
             {
                 cnn.Open();
                 string query = $@"update phongchieu set tenphong = N'{room.name}', tongsohang = {room.totalRows}, 
-                    tongsocot = {room.totalColumns}, mamanhinh = '{room.screen.id}' where maphong = '{room.id}'";
+                    tongsocot = {room.totalColumns} where maphong = '{room.id}'";
                 scm = new SqlCommand(query, cnn);
                 scm.ExecuteNonQuery();
             }

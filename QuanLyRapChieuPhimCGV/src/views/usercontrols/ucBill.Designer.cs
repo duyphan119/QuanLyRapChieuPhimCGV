@@ -29,10 +29,10 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvBill = new System.Windows.Forms.DataGridView();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -48,15 +48,19 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.rbtnYes = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.numPoint = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numPoint = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPoint)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -88,6 +92,15 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBill.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBill.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column5,
@@ -95,6 +108,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Column2,
             this.Column3,
             this.Column6});
+            this.dgvBill.EnableHeadersVisualStyles = false;
             this.dgvBill.Location = new System.Drawing.Point(254, 18);
             this.dgvBill.Name = "dgvBill";
             this.dgvBill.RowHeadersVisible = false;
@@ -105,21 +119,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.dgvBill.TabIndex = 89;
             this.dgvBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBill_CellClick);
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(114, 413);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 31);
-            this.btnSave.TabIndex = 88;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(33, 376);
+            this.btnCancel.Location = new System.Drawing.Point(115, 40);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 31);
+            this.btnCancel.Size = new System.Drawing.Size(105, 31);
             this.btnCancel.TabIndex = 87;
             this.btnCancel.Text = "Huỷ";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -127,9 +131,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(114, 376);
+            this.btnDelete.Location = new System.Drawing.Point(3, 40);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 31);
+            this.btnDelete.Size = new System.Drawing.Size(106, 31);
             this.btnDelete.TabIndex = 86;
             this.btnDelete.Text = "Xoá";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -137,9 +141,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(114, 339);
+            this.btnEdit.Location = new System.Drawing.Point(114, 3);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 31);
+            this.btnEdit.Size = new System.Drawing.Size(106, 31);
             this.btnEdit.TabIndex = 85;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -147,9 +151,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(33, 339);
+            this.btnAdd.Location = new System.Drawing.Point(3, 3);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 31);
+            this.btnAdd.Size = new System.Drawing.Size(105, 31);
             this.btnAdd.TabIndex = 84;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -266,41 +270,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.label3.TabIndex = 159;
             this.label3.Text = "Khách Hàng";
             // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Số HĐ";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Ngày HĐ";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nhân Viên";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Khách Hàng";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Tổng Tiền";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
             // numPoint
             // 
             this.numPoint.Enabled = false;
@@ -323,9 +292,78 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.label9.TabIndex = 165;
             this.label9.Text = "Điểm (0)";
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(115, 77);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(106, 31);
+            this.btnExport.TabIndex = 167;
+            this.btnExport.Text = "Xuất hoá đơn";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnAdd);
+            this.flowLayoutPanel1.Controls.Add(this.btnEdit);
+            this.flowLayoutPanel1.Controls.Add(this.btnDelete);
+            this.flowLayoutPanel1.Controls.Add(this.btnCancel);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.btnExport);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(16, 264);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(233, 133);
+            this.flowLayoutPanel1.TabIndex = 168;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 77);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(106, 31);
+            this.button1.TabIndex = 168;
+            this.button1.Text = "Lưu";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Số HĐ";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Ngày HĐ";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Người Lập";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Khách Hàng";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Tổng Tiền";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
             // ucBill
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.numPoint);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnSelectCustomer);
@@ -340,11 +378,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvBill);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.cbId);
             this.Controls.Add(this.lblId);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -353,6 +386,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Load += new System.EventHandler(this.ucBill_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPoint)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -362,7 +396,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvBill;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
@@ -372,11 +405,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.DateTimePicker dateTime;
         private System.Windows.Forms.Button btnSelectFood;
         private System.Windows.Forms.TextBox txtPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Button btnSelectCustomer;
         private System.Windows.Forms.TextBox txtCustomer;
         private System.Windows.Forms.RadioButton rbtnNo;
@@ -385,5 +413,13 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numPoint;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }

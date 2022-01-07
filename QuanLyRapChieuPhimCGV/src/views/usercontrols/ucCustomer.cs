@@ -62,7 +62,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
 
             if (trimmedEmail.EndsWith("."))
             {
-                return false; // suggested by @TK-421
+                return false;
             }
             try
             {
@@ -92,11 +92,14 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             {
                 error += "Email không hợp lệ\n";
             }
-            else if (dao_cus.getByEmail(txtEmail.Text) != null)
+            else if (action == ADD && dao_cus.getByEmail(txtEmail.Text) != null)
             {
                 error += "Email đã tồn tại\n";
             }
-
+            else if (action == EDIT && cbId.Text != "" && customers.Find(cus => cus.id != cbId.Text && cus.email == txtEmail.Text) != null)
+            {
+                error += "Số điện thoại đã tồn tại\n";
+            }
             if (cbCard.Text == "")
             {
                 error += "Chưa chọn thẻ\n";
@@ -110,7 +113,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 try
                 {
                     decimal phone = Convert.ToDecimal(txtPhone.Text);
-                    if(dao_cus.getByPhone(txtPhone.Text) != null)
+                    if(action == ADD && dao_cus.getByPhone(txtPhone.Text) != null)
+                    {
+                        error += "Số điện thoại đã tồn tại\n";
+                    }
+                    if(action == EDIT && cbId.Text!="" && customers.Find(cus=>cus.id != cbId.Text &&cus.phone == txtPhone.Text) != null)
                     {
                         error += "Số điện thoại đã tồn tại\n";
                     }

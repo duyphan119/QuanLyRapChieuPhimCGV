@@ -31,7 +31,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                     ticketPrice.id = reader.GetString(0);
                     ticketPrice.startDate = reader.GetInt32(1);
                     ticketPrice.endDate = reader.GetInt32(2);
-                    ticketPrice.objectPerson = reader.GetInt32(3);
+                    ticketPrice.objectPerson = reader.GetString(3);
                     ticketPrice.price = reader.GetDecimal(4);
                     ticketPrices.Add(ticketPrice);
                 }
@@ -63,7 +63,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                     ticketPrice.id = reader.GetString(0);
                     ticketPrice.startDate = reader.GetInt32(1);
                     ticketPrice.endDate = reader.GetInt32(2);
-                    ticketPrice.objectPerson = reader.GetInt32(3);
+                    ticketPrice.objectPerson = reader.GetString(3);
                     ticketPrice.price = reader.GetDecimal(4);
                     ticketPrices.Add(ticketPrice);
                 }
@@ -94,7 +94,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                     ticketPrice.id = reader.GetString(0);
                     ticketPrice.startDate = reader.GetInt32(1);
                     ticketPrice.endDate = reader.GetInt32(2);
-                    ticketPrice.objectPerson = reader.GetInt32(3);
+                    ticketPrice.objectPerson = reader.GetString(3);
                     ticketPrice.price = reader.GetDecimal(4);
                 }
             }
@@ -115,7 +115,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             {
                 cnn.Open();
                 string query = $@"insert into giave(magia, tuthu, denthu, doituong, gia)
-                           values ('{ticketPrice.id}',{ticketPrice.startDate},{ticketPrice.endDate}, {ticketPrice.objectPerson}, {ticketPrice.price})";
+                           values ('{ticketPrice.id}',{ticketPrice.startDate},{ticketPrice.endDate}, N'{ticketPrice.objectPerson}', {ticketPrice.price})";
                 scm = new SqlCommand(query, cnn);
                 scm.ExecuteNonQuery();
             }
@@ -135,7 +135,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             {
                 cnn.Open();
                 string query = $@"update giave set tuthu = {ticketPrice.startDate}, denthu = {ticketPrice.endDate}, 
-                    doituong = {ticketPrice.objectPerson}, gia = {ticketPrice.price} where magia = '{ticketPrice.id}'";
+                    doituong = N'{ticketPrice.objectPerson}', gia = {ticketPrice.price} where magia = '{ticketPrice.id}'";
                 scm = new SqlCommand(query, cnn);
                 scm.ExecuteNonQuery();
             }

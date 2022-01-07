@@ -29,6 +29,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvChair = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +51,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnSave = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cbRoom = new System.Windows.Forms.ComboBox();
+            this.btnView = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChair)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numColumn)).BeginInit();
@@ -66,6 +68,15 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvChair.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvChair.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvChair.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvChair.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvChair.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -257,10 +268,21 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.cbRoom.SelectedIndexChanged += new System.EventHandler(this.cbRoom_SelectedIndexChanged);
             this.cbRoom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbRoom_KeyPress);
             // 
+            // btnView
+            // 
+            this.btnView.Location = new System.Drawing.Point(558, 117);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(154, 31);
+            this.btnView.TabIndex = 77;
+            this.btnView.Text = "Xem sơ đồ ghế";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
             // ucChair
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnView);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cbRoom);
             this.Controls.Add(this.numColumn);
@@ -311,5 +333,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Button btnView;
     }
 }

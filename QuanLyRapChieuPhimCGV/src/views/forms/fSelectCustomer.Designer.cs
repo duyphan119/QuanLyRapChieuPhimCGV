@@ -32,7 +32,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fSelectCustomer));
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
-            this.btnSelect = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +39,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.btnNewCustomer = new System.Windows.Forms.Button();
+            this.txtKeyword = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +56,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -67,25 +70,15 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             this.Column5,
             this.Column6,
             this.Column7});
-            this.dgvCustomer.Location = new System.Drawing.Point(12, 12);
+            this.dgvCustomer.Location = new System.Drawing.Point(12, 43);
             this.dgvCustomer.MultiSelect = false;
             this.dgvCustomer.Name = "dgvCustomer";
             this.dgvCustomer.RowHeadersVisible = false;
             this.dgvCustomer.RowHeadersWidth = 51;
             this.dgvCustomer.RowTemplate.Height = 24;
             this.dgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomer.Size = new System.Drawing.Size(1137, 394);
+            this.dgvCustomer.Size = new System.Drawing.Size(1137, 363);
             this.dgvCustomer.TabIndex = 0;
-            // 
-            // btnSelect
-            // 
-            this.btnSelect.Location = new System.Drawing.Point(1051, 412);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(98, 29);
-            this.btnSelect.TabIndex = 2;
-            this.btnSelect.Text = "Chọn";
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // Column1
             // 
@@ -136,10 +129,40 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             // 
+            // btnSelect
+            // 
+            this.btnSelect.Location = new System.Drawing.Point(1051, 412);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(98, 29);
+            this.btnSelect.TabIndex = 2;
+            this.btnSelect.Text = "Chọn";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // btnNewCustomer
+            // 
+            this.btnNewCustomer.Location = new System.Drawing.Point(842, 412);
+            this.btnNewCustomer.Name = "btnNewCustomer";
+            this.btnNewCustomer.Size = new System.Drawing.Size(203, 29);
+            this.btnNewCustomer.TabIndex = 3;
+            this.btnNewCustomer.Text = "Thêm khách hàng mới";
+            this.btnNewCustomer.UseVisualStyleBackColor = true;
+            this.btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
+            // 
+            // txtKeyword
+            // 
+            this.txtKeyword.Location = new System.Drawing.Point(901, 12);
+            this.txtKeyword.Name = "txtKeyword";
+            this.txtKeyword.Size = new System.Drawing.Size(248, 25);
+            this.txtKeyword.TabIndex = 4;
+            this.txtKeyword.TextChanged += new System.EventHandler(this.txtKeyword_TextChanged);
+            // 
             // fSelectCustomer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1161, 450);
+            this.Controls.Add(this.txtKeyword);
+            this.Controls.Add(this.btnNewCustomer);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.dgvCustomer);
             this.Font = new System.Drawing.Font("Arial", 9F);
@@ -149,6 +172,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             this.Text = "Chọn khách hàng";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -163,5 +187,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.Button btnNewCustomer;
+        private System.Windows.Forms.TextBox txtKeyword;
     }
 }

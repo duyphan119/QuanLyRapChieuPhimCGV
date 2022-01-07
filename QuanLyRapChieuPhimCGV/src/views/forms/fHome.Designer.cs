@@ -32,6 +32,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fHome));
             this.pnlView = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,6 +68,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnLogout);
             this.panel1.Controls.Add(this.btnChangePassword);
             this.panel1.Controls.Add(this.label1);
@@ -75,6 +77,16 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1080, 86);
             this.panel1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(72, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(167, 25);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Quản lý: Phan Khánh Duy";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // btnLogout
             // 
@@ -106,12 +118,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(72, 64);
+            this.label1.Location = new System.Drawing.Point(72, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 17);
+            this.label1.Size = new System.Drawing.Size(167, 25);
             this.label1.TabIndex = 1;
-            this.label1.Text = "USER: Phan Khánh Duy";
+            this.label1.Text = "Quản lý: Phan Khánh Duy";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // pictureBox2
             // 
@@ -265,9 +277,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             this.Name = "fHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phần mềm quản lý rạp chiếu phim CGV";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fNewHome_FormClosing);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -293,5 +305,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
         private System.Windows.Forms.Button btnBookTicket;
         private System.Windows.Forms.Button btnSellFood;
         private System.Windows.Forms.Button btnStatistics;
+        private System.Windows.Forms.Label label2;
     }
 }

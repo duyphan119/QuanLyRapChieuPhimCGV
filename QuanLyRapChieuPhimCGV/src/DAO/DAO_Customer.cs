@@ -25,6 +25,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             try
             {
                 DAO_Card dao_c = new DAO_Card();
+                Methods methods = new Methods();
                 cnn.Open();
                 string query = "select makhach, sdt, email, ngaysinh, gioitinh, mathe, tongdiem from khachhang";
                 scm = new SqlCommand(query, cnn);
@@ -38,6 +39,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                     customer.gender = (reader.GetBoolean(4) == true)?"Nam":"Nữ";
                     customer.card = dao_c.getById(reader.GetString(5));
                     customer.totalPoint = (float)reader.GetDouble(6);
+                    customer = methods.upgradeCard(customer);
                     customers.Add(customer);
                 }
             }
@@ -50,6 +52,105 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                 cnn.Close();
             }
             return customers;
+        }
+
+        public List<Customer> searchById(string keyword)
+        {
+            List<Customer> customers = new List<Customer>();
+            try
+            {
+                DAO_Card dao_c = new DAO_Card();
+                cnn.Open();
+                string query = $"select makhach, sdt, email, ngaysinh, gioitinh, mathe, tongdiem from khachhang where makhach like '%{keyword}%'";
+                scm = new SqlCommand(query, cnn);
+                reader = scm.ExecuteReader();
+                while (reader.Read())
+                {
+                    Customer customer = new Customer();
+                    customer.id = reader.GetString(0);
+                    customer.phone = reader.GetString(1);
+                    customer.email = reader.GetString(2);
+                    customer.dayOfBirth = reader.GetDateTime(3);
+                    customer.gender = (reader.GetBoolean(4) == true) ? "Nam" : "Nữ";
+                    customer.card = dao_c.getById(reader.GetString(5));
+                    customer.totalPoint = (float)reader.GetDouble(6);
+                    customers.Add(customer);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return customers;
+        }
+
+        public decimal getExpenseOfCustomer(Customer customer, int months)
+        {
+            decimal result = 0;
+            try
+            {
+                cnn.Open();
+                string query = $@"DECLARE @I INT;
+	                            DECLARE @HIENTAI DATETIME;
+	                            DECLARE @CHITIEU DECIMAL;
+	                            SET @CHITIEU = 0;
+	                            SET @HIENTAI = GETDATE();
+	                            SET @I = {months};
+	                            WHILE @I > 0
+	                            BEGIN
+		                            PRINT @I;
+		                            DECLARE @NGAYXET DATETIME;
+		                            DECLARE @CHITIEUXET_VE DECIMAL;
+		                            DECLARE @CHITIEUXET_HD DECIMAL;
+		                            SET @NGAYXET = DATEADD(MONTH, 1-@I, @HIENTAI);
+		                            SELECT @CHITIEUXET_VE = SUM(V.TONGTIEN)
+		                            FROM KHACHHANG K, VE V
+		                            WHERE 
+			                            K.MAKHACH = V.MAKHACH AND
+			                            K.MAKHACH = '{customer.id}' AND
+			                            YEAR(V.NGAYLAP) =YEAR(@NGAYXET) AND
+			                            MONTH(V.NGAYLAP) = MONTH(@NGAYXET)
+		                            IF(@CHITIEUXET_VE IS NULL)
+		                            BEGIN
+			                            SET @CHITIEUXET_VE = 0;
+		                            END
+
+		                            SELECT @CHITIEUXET_HD = SUM(HD.TONGTIEN)
+		                            FROM KHACHHANG K, HOADON HD
+		                            WHERE 
+			                            K.MAKHACH = HD.MAKHACH AND
+			                            K.MAKHACH = '{customer.id}' AND
+			                            YEAR(HD.NGAYHD) =YEAR(@NGAYXET) AND
+			                            MONTH(HD.NGAYHD) = MONTH(@NGAYXET)
+		                            IF(@CHITIEUXET_HD IS NULL)
+		                            BEGIN
+			                            SET @CHITIEUXET_HD = 0;
+		                            END
+
+		                            SET @CHITIEU = @CHITIEU + @CHITIEUXET_VE + @CHITIEUXET_HD;
+		                            SET @I = @I - 1;
+	                            END
+	                            SELECT @CHITIEU;";
+                scm = new SqlCommand(query, cnn);
+                reader = scm.ExecuteReader();
+                if (reader.Read())
+                {
+                    result = reader.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return result;
         }
 
         public Customer getByEmail(string email)//Lấy khách hàng theo email

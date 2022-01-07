@@ -35,7 +35,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
@@ -61,6 +60,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.numPoint = new System.Windows.Forms.NumericUpDown();
             this.txtDateTime = new System.Windows.Forms.TextBox();
             this.txtMovie = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +73,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTicket)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPoint)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbId
@@ -119,21 +121,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.label4.TabIndex = 128;
             this.label4.Text = "Thời gian";
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(86, 525);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 31);
-            this.btnSave.TabIndex = 136;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(8, 525);
+            this.btnCancel.Location = new System.Drawing.Point(122, 40);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 31);
+            this.btnCancel.Size = new System.Drawing.Size(113, 31);
             this.btnCancel.TabIndex = 135;
             this.btnCancel.Text = "Huỷ";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -141,9 +133,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(8, 488);
+            this.btnAdd.Location = new System.Drawing.Point(3, 3);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 31);
+            this.btnAdd.Size = new System.Drawing.Size(113, 31);
             this.btnAdd.TabIndex = 132;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -151,11 +143,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(167, 525);
+            this.btnExport.Location = new System.Drawing.Point(122, 77);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 31);
+            this.btnExport.Size = new System.Drawing.Size(113, 31);
             this.btnExport.TabIndex = 139;
-            this.btnExport.Text = "Xuất Vé";
+            this.btnExport.Text = "Xuất vé";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
@@ -189,11 +181,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTicket.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvTicket.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -209,6 +201,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Column7,
             this.Column4,
             this.Column9});
+            this.dgvTicket.EnableHeadersVisualStyles = false;
             this.dgvTicket.Location = new System.Drawing.Point(248, 31);
             this.dgvTicket.Name = "dgvTicket";
             this.dgvTicket.RowHeadersVisible = false;
@@ -221,9 +214,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(167, 488);
+            this.btnDelete.Location = new System.Drawing.Point(3, 40);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 31);
+            this.btnDelete.Size = new System.Drawing.Size(113, 31);
             this.btnDelete.TabIndex = 145;
             this.btnDelete.Text = "Xoá";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -231,9 +224,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(86, 488);
+            this.btnEdit.Location = new System.Drawing.Point(122, 3);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 31);
+            this.btnEdit.Size = new System.Drawing.Size(113, 31);
             this.btnEdit.TabIndex = 144;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -404,6 +397,29 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.txtMovie.Size = new System.Drawing.Size(125, 25);
             this.txtMovie.TabIndex = 163;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnAdd);
+            this.flowLayoutPanel1.Controls.Add(this.btnEdit);
+            this.flowLayoutPanel1.Controls.Add(this.btnDelete);
+            this.flowLayoutPanel1.Controls.Add(this.btnCancel);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.btnExport);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 494);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(242, 114);
+            this.flowLayoutPanel1.TabIndex = 164;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 77);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 31);
+            this.button1.TabIndex = 146;
+            this.button1.Text = "Lưu";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Column5
             // 
             this.Column5.HeaderText = "Số Vé";
@@ -413,6 +429,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // Column8
             // 
+            this.Column8.FillWeight = 110F;
             this.Column8.HeaderText = "Ngày Lập";
             this.Column8.MinimumWidth = 6;
             this.Column8.Name = "Column8";
@@ -427,7 +444,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "Nhân Viên";
+            this.Column6.HeaderText = "Người Lập";
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
@@ -455,6 +472,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             // Column4
             // 
+            this.Column4.FillWeight = 90F;
             this.Column4.HeaderText = "Ghế";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
@@ -471,6 +489,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.txtMovie);
             this.Controls.Add(this.txtDateTime);
             this.Controls.Add(this.numPoint);
@@ -487,15 +506,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Controls.Add(this.txtTicketPrice);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSelectMovie);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.dgvTicket);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSelectChair);
-            this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -508,6 +521,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.Load += new System.EventHandler(this.ucTicket_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTicket)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPoint)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,7 +534,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnExport;
@@ -546,6 +559,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.NumericUpDown numPoint;
         private System.Windows.Forms.TextBox txtDateTime;
         private System.Windows.Forms.TextBox txtMovie;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

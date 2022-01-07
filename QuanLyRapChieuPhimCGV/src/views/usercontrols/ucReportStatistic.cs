@@ -25,6 +25,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             revenueInYear();
 
             cbFilterStatistic.SelectedIndex = 0;
+
+            revenueOfMovies();
         }
 
         public void revenueInDay()
@@ -104,6 +106,46 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private void btnViewStatistic_Click(object sender, EventArgs e)
         {
             statisticRevenue(cbFilterStatistic.SelectedIndex);
+        }
+
+        public void revenueOfMovies()
+        {
+            try
+            {
+                DataTable table = dao_sta.getRevenueOfMovie("");
+                dataGridView1.Rows.Clear();
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    dataGridView1.Rows.Add(new object[]{
+                    table.Rows[i].ItemArray[0], table.Rows[i].ItemArray[1], Convert.ToDecimal(table.Rows[i].ItemArray[2])
+                });
+                }
+                dataGridView1.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        private void txtKeyword_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable table = dao_sta.getRevenueOfMovie(txtKeyword.Text);
+                dataGridView1.Rows.Clear();
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    dataGridView1.Rows.Add(new object[]{
+                    table.Rows[i].ItemArray[0], table.Rows[i].ItemArray[1], Convert.ToDecimal(table.Rows[i].ItemArray[2])
+                });
+                }
+                dataGridView1.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }

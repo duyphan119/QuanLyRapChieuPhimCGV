@@ -41,32 +41,28 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnCardItem = new System.Windows.Forms.Button();
             this.btnCustomerItem = new System.Windows.Forms.Button();
             this.btnChairItem = new System.Windows.Forms.Button();
-            this.btnScreenItem = new System.Windows.Forms.Button();
             this.btnTheaterItem = new System.Windows.Forms.Button();
             this.btnMovieItem = new System.Windows.Forms.Button();
             this.btnCategoryMovieItem = new System.Windows.Forms.Button();
-            this.btnDistributorItem = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.btnBillItem);
             this.flowLayoutPanel1.Controls.Add(this.btnEmployeeItem);
-            this.flowLayoutPanel1.Controls.Add(this.btnFoodItem);
-            this.flowLayoutPanel1.Controls.Add(this.btnPriceTicketItem);
-            this.flowLayoutPanel1.Controls.Add(this.btnTicketItem);
-            this.flowLayoutPanel1.Controls.Add(this.btnScheduleItem);
-            this.flowLayoutPanel1.Controls.Add(this.btnGroupFoodItem);
+            this.flowLayoutPanel1.Controls.Add(this.btnTheaterItem);
             this.flowLayoutPanel1.Controls.Add(this.btnChairTypeItem);
+            this.flowLayoutPanel1.Controls.Add(this.btnChairItem);
+            this.flowLayoutPanel1.Controls.Add(this.btnGroupFoodItem);
+            this.flowLayoutPanel1.Controls.Add(this.btnFoodItem);
             this.flowLayoutPanel1.Controls.Add(this.btnCardItem);
             this.flowLayoutPanel1.Controls.Add(this.btnCustomerItem);
-            this.flowLayoutPanel1.Controls.Add(this.btnChairItem);
-            this.flowLayoutPanel1.Controls.Add(this.btnScreenItem);
-            this.flowLayoutPanel1.Controls.Add(this.btnTheaterItem);
-            this.flowLayoutPanel1.Controls.Add(this.btnMovieItem);
             this.flowLayoutPanel1.Controls.Add(this.btnCategoryMovieItem);
-            this.flowLayoutPanel1.Controls.Add(this.btnDistributorItem);
+            this.flowLayoutPanel1.Controls.Add(this.btnMovieItem);
+            this.flowLayoutPanel1.Controls.Add(this.btnScheduleItem);
+            this.flowLayoutPanel1.Controls.Add(this.btnBillItem);
+            this.flowLayoutPanel1.Controls.Add(this.btnPriceTicketItem);
+            this.flowLayoutPanel1.Controls.Add(this.btnTicketItem);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -81,7 +77,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnBillItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBillItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnBillItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.bill1;
-            this.btnBillItem.Location = new System.Drawing.Point(3, 3);
+            this.btnBillItem.Location = new System.Drawing.Point(813, 309);
             this.btnBillItem.Name = "btnBillItem";
             this.btnBillItem.Size = new System.Drawing.Size(264, 147);
             this.btnBillItem.TabIndex = 39;
@@ -99,7 +95,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnEmployeeItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmployeeItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnEmployeeItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.employees;
-            this.btnEmployeeItem.Location = new System.Drawing.Point(273, 3);
+            this.btnEmployeeItem.Location = new System.Drawing.Point(3, 3);
             this.btnEmployeeItem.Name = "btnEmployeeItem";
             this.btnEmployeeItem.Size = new System.Drawing.Size(264, 147);
             this.btnEmployeeItem.TabIndex = 38;
@@ -117,7 +113,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnFoodItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFoodItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnFoodItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.popcorn;
-            this.btnFoodItem.Location = new System.Drawing.Point(543, 3);
+            this.btnFoodItem.Location = new System.Drawing.Point(273, 156);
             this.btnFoodItem.Name = "btnFoodItem";
             this.btnFoodItem.Size = new System.Drawing.Size(264, 147);
             this.btnFoodItem.TabIndex = 37;
@@ -135,7 +131,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnPriceTicketItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPriceTicketItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnPriceTicketItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.price_list;
-            this.btnPriceTicketItem.Location = new System.Drawing.Point(813, 3);
+            this.btnPriceTicketItem.Location = new System.Drawing.Point(3, 462);
             this.btnPriceTicketItem.Name = "btnPriceTicketItem";
             this.btnPriceTicketItem.Size = new System.Drawing.Size(264, 147);
             this.btnPriceTicketItem.TabIndex = 36;
@@ -153,9 +149,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnTicketItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTicketItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnTicketItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.movies;
-            this.btnTicketItem.Location = new System.Drawing.Point(3, 156);
+            this.btnTicketItem.Location = new System.Drawing.Point(273, 462);
             this.btnTicketItem.Name = "btnTicketItem";
-            this.btnTicketItem.Size = new System.Drawing.Size(262, 147);
+            this.btnTicketItem.Size = new System.Drawing.Size(264, 147);
             this.btnTicketItem.TabIndex = 35;
             this.btnTicketItem.Text = "\r\nVé";
             this.btnTicketItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -171,9 +167,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnScheduleItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnScheduleItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnScheduleItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.calendar;
-            this.btnScheduleItem.Location = new System.Drawing.Point(271, 156);
+            this.btnScheduleItem.Location = new System.Drawing.Point(543, 309);
             this.btnScheduleItem.Name = "btnScheduleItem";
-            this.btnScheduleItem.Size = new System.Drawing.Size(266, 147);
+            this.btnScheduleItem.Size = new System.Drawing.Size(264, 147);
             this.btnScheduleItem.TabIndex = 34;
             this.btnScheduleItem.Text = "\rLịch chiếu";
             this.btnScheduleItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -189,7 +185,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnGroupFoodItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGroupFoodItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnGroupFoodItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.popcorn;
-            this.btnGroupFoodItem.Location = new System.Drawing.Point(543, 156);
+            this.btnGroupFoodItem.Location = new System.Drawing.Point(3, 156);
             this.btnGroupFoodItem.Name = "btnGroupFoodItem";
             this.btnGroupFoodItem.Size = new System.Drawing.Size(264, 147);
             this.btnGroupFoodItem.TabIndex = 33;
@@ -207,7 +203,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnChairTypeItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChairTypeItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnChairTypeItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.chair;
-            this.btnChairTypeItem.Location = new System.Drawing.Point(813, 156);
+            this.btnChairTypeItem.Location = new System.Drawing.Point(543, 3);
             this.btnChairTypeItem.Name = "btnChairTypeItem";
             this.btnChairTypeItem.Size = new System.Drawing.Size(264, 147);
             this.btnChairTypeItem.TabIndex = 32;
@@ -225,9 +221,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnCardItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCardItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnCardItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.credit_card;
-            this.btnCardItem.Location = new System.Drawing.Point(3, 309);
+            this.btnCardItem.Location = new System.Drawing.Point(543, 156);
             this.btnCardItem.Name = "btnCardItem";
-            this.btnCardItem.Size = new System.Drawing.Size(262, 147);
+            this.btnCardItem.Size = new System.Drawing.Size(264, 147);
             this.btnCardItem.TabIndex = 31;
             this.btnCardItem.Text = "\r\nThẻ";
             this.btnCardItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -243,9 +239,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnCustomerItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomerItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnCustomerItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.buyer;
-            this.btnCustomerItem.Location = new System.Drawing.Point(271, 309);
+            this.btnCustomerItem.Location = new System.Drawing.Point(813, 156);
             this.btnCustomerItem.Name = "btnCustomerItem";
-            this.btnCustomerItem.Size = new System.Drawing.Size(266, 147);
+            this.btnCustomerItem.Size = new System.Drawing.Size(264, 147);
             this.btnCustomerItem.TabIndex = 30;
             this.btnCustomerItem.Text = "\r\nKhách hàng";
             this.btnCustomerItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -261,7 +257,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnChairItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChairItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnChairItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.chair;
-            this.btnChairItem.Location = new System.Drawing.Point(543, 309);
+            this.btnChairItem.Location = new System.Drawing.Point(813, 3);
             this.btnChairItem.Name = "btnChairItem";
             this.btnChairItem.Size = new System.Drawing.Size(264, 147);
             this.btnChairItem.TabIndex = 29;
@@ -271,24 +267,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnChairItem.UseVisualStyleBackColor = false;
             this.btnChairItem.Click += new System.EventHandler(this.btnChairItem_Click);
             // 
-            // btnScreenItem
-            // 
-            this.btnScreenItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnScreenItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnScreenItem.FlatAppearance.BorderSize = 0;
-            this.btnScreenItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnScreenItem.Font = new System.Drawing.Font("Arial", 11F);
-            this.btnScreenItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.projector_screen;
-            this.btnScreenItem.Location = new System.Drawing.Point(813, 309);
-            this.btnScreenItem.Name = "btnScreenItem";
-            this.btnScreenItem.Size = new System.Drawing.Size(264, 147);
-            this.btnScreenItem.TabIndex = 28;
-            this.btnScreenItem.Text = "\r\nMàn hình";
-            this.btnScreenItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnScreenItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnScreenItem.UseVisualStyleBackColor = false;
-            this.btnScreenItem.Click += new System.EventHandler(this.btnScreenItem_Click);
-            // 
             // btnTheaterItem
             // 
             this.btnTheaterItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -297,11 +275,11 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnTheaterItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTheaterItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnTheaterItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.movie_theater;
-            this.btnTheaterItem.Location = new System.Drawing.Point(3, 462);
+            this.btnTheaterItem.Location = new System.Drawing.Point(273, 3);
             this.btnTheaterItem.Name = "btnTheaterItem";
-            this.btnTheaterItem.Size = new System.Drawing.Size(262, 147);
+            this.btnTheaterItem.Size = new System.Drawing.Size(264, 147);
             this.btnTheaterItem.TabIndex = 27;
-            this.btnTheaterItem.Text = "\r\nRạp";
+            this.btnTheaterItem.Text = "\r\nPhòng Chiếu";
             this.btnTheaterItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnTheaterItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnTheaterItem.UseVisualStyleBackColor = false;
@@ -315,9 +293,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnMovieItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMovieItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnMovieItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.film_reel_64;
-            this.btnMovieItem.Location = new System.Drawing.Point(271, 462);
+            this.btnMovieItem.Location = new System.Drawing.Point(273, 309);
             this.btnMovieItem.Name = "btnMovieItem";
-            this.btnMovieItem.Size = new System.Drawing.Size(266, 147);
+            this.btnMovieItem.Size = new System.Drawing.Size(264, 147);
             this.btnMovieItem.TabIndex = 26;
             this.btnMovieItem.Text = "\r\nPhim";
             this.btnMovieItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -333,7 +311,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnCategoryMovieItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategoryMovieItem.Font = new System.Drawing.Font("Arial", 11F);
             this.btnCategoryMovieItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.categories;
-            this.btnCategoryMovieItem.Location = new System.Drawing.Point(543, 462);
+            this.btnCategoryMovieItem.Location = new System.Drawing.Point(3, 309);
             this.btnCategoryMovieItem.Name = "btnCategoryMovieItem";
             this.btnCategoryMovieItem.Size = new System.Drawing.Size(264, 147);
             this.btnCategoryMovieItem.TabIndex = 25;
@@ -342,24 +320,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             this.btnCategoryMovieItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCategoryMovieItem.UseVisualStyleBackColor = false;
             this.btnCategoryMovieItem.Click += new System.EventHandler(this.btnCategoryMovieItem_Click);
-            // 
-            // btnDistributorItem
-            // 
-            this.btnDistributorItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDistributorItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnDistributorItem.FlatAppearance.BorderSize = 0;
-            this.btnDistributorItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDistributorItem.Font = new System.Drawing.Font("Arial", 11F);
-            this.btnDistributorItem.Image = global::QuanLyRapChieuPhimCGV.Properties.Resources.distribution;
-            this.btnDistributorItem.Location = new System.Drawing.Point(813, 462);
-            this.btnDistributorItem.Name = "btnDistributorItem";
-            this.btnDistributorItem.Size = new System.Drawing.Size(264, 147);
-            this.btnDistributorItem.TabIndex = 24;
-            this.btnDistributorItem.Text = "\r\nNhà phát hành";
-            this.btnDistributorItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDistributorItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDistributorItem.UseVisualStyleBackColor = false;
-            this.btnDistributorItem.Click += new System.EventHandler(this.btnDistributorItem_Click);
             // 
             // ucAdministration
             // 
@@ -388,10 +348,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private System.Windows.Forms.Button btnCardItem;
         private System.Windows.Forms.Button btnCustomerItem;
         private System.Windows.Forms.Button btnChairItem;
-        private System.Windows.Forms.Button btnScreenItem;
         private System.Windows.Forms.Button btnTheaterItem;
         private System.Windows.Forms.Button btnMovieItem;
         private System.Windows.Forms.Button btnCategoryMovieItem;
-        private System.Windows.Forms.Button btnDistributorItem;
     }
 }

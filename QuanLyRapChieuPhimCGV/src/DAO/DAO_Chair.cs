@@ -48,6 +48,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             }
             return chairs;
         }
+
         public string getChairName(Chair chair)
         {
             List<Chair> a = getAllInRow(chair.row, chair.room);
@@ -101,32 +102,35 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
         public bool isBooked(Schedule schedule, Chair chair)
         {
             bool result = false;
-            try
+            if (schedule != null)
             {
-                DAO_ChairType dao_ct = new DAO_ChairType();
-                DAO_Room dao_r = new DAO_Room();
-                cnn.Open();
-                string query = $@"SELECT *
+                try
+                {
+                    DAO_ChairType dao_ct = new DAO_ChairType();
+                    DAO_Room dao_r = new DAO_Room();
+                    cnn.Open();
+                    string query = $@"SELECT *
                             FROM VE V, LICHCHIEU L, GHE G
                             WHERE V.MALICH = L.MALICH AND 
 	                            G.MAPHONG = L.MAPHONG AND 
 	                            L.MALICH = '{schedule.id}' AND 
 	                            G.MAGHE = '{chair.id}' AND 
 	                            V.MAGHE = G.MAGHE";
-                scm = new SqlCommand(query, cnn);
-                reader = scm.ExecuteReader();
-                if (reader.Read())
-                {
-                    result = true;
+                    scm = new SqlCommand(query, cnn);
+                    reader = scm.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        result = true;
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                cnn.Close();
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
             }
             return result;
         }

@@ -22,7 +22,25 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             pnlView.Controls.Add(new ucHome());
             btn_Clicked = btnHome;
             pictureBox2.Image = Image.FromFile($@"..\..\public\img\{(employee.gender == "Nam" ? "profile" : "profile-female")}.png");
-            label1.Text = $"{methods.getPermission(employee.permission)}: {employee.name}";
+            label1.Text = $"{employee.name}";
+            label2.Text = $"{employee.position.ToUpper()}";
+            if (employee.permission == 0)
+            {
+                flowLayoutPanel1.Controls.Remove(btnAdministration);
+                flowLayoutPanel1.Controls.Remove(btnSellFood);
+                flowLayoutPanel1.Controls.Remove(btnStatistics);
+            }
+            else if (employee.permission == 1)
+            {
+                flowLayoutPanel1.Controls.Remove(btnAdministration);
+                flowLayoutPanel1.Controls.Remove(btnBookTicket);
+                flowLayoutPanel1.Controls.Remove(btnStatistics);
+            }
+            else if (employee.permission == 2)
+            {
+                flowLayoutPanel1.Controls.Remove(btnBookTicket);
+                flowLayoutPanel1.Controls.Remove(btnSellFood);
+            }
         }
 
         private void fNewHome_FormClosing(object sender, FormClosingEventArgs e)

@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using QuanLyRapChieuPhimCGV.src.DAO;
+using QuanLyRapChieuPhimCGV.src.models;
+using System;
 
 namespace QuanLyRapChieuPhimCGV.src.utils
 {
     public class Methods
     {
+        public DAO_Customer dao_cus = new DAO_Customer();
         public string addZero(int num, int value)
         {
             string result = "";
@@ -17,44 +16,32 @@ namespace QuanLyRapChieuPhimCGV.src.utils
             }
             return result + value;
         }
-
-        public string getObjectPersonBuyTicketName(int id)
+        public Customer upgradeCard(Customer customer)
         {
-            string result = "Tất cả";
-            if(id == 0)
+            if(customer != null)
             {
-                result = "Có thẻ U22";
-            }else if(id == 1)
-            {
-                result = "Trẻ em";
+                DateTime today = DateTime.Today;
+                int age = today.Year - customer.dayOfBirth.Year;
+                if (customer.dayOfBirth > today.AddYears(-age))
+                    age--;
+                if(age > 22 && customer.id == "210001")
+                {
+                    customer.card.id = "210002";
+                    dao_cus.updateOne(customer);
+                }
+                decimal expense = dao_cus.getExpenseOfCustomer(customer, 15);
+                if (expense >= 2500000 && expense < 5000000)
+                {
+                    customer.card.id = "210003";
+                    dao_cus.updateOne(customer);
+                }
+                else if (expense > 5000000)
+                {
+                    customer.card.id = "210004";
+                    dao_cus.updateOne(customer);
+                }
             }
-            else if (id == 2)
-            {
-                result = "Học sinh";
-            }
-            else if (id == 3)
-            {
-                result = "Sinh viên";
-            }
-            else if (id == 4)
-            {
-                result = "Người cao tuổi";
-            }
-            else if (id == 5)
-            {
-                result = "Người lớn";
-            }
-            return result;
-        }
-
-        public string getPermission(int permission)
-        {
-            string result = "USER";
-            if (permission == 1)
-            {
-                result = "ADMIN";
-            }
-            return result;
+            return customer;
         }
     }
 }

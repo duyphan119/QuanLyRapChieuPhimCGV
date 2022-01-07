@@ -12,7 +12,6 @@ namespace QuanLyRapChieuPhimCGV.src.models
         public string name;
         public int totalRows;
         public int totalColumns;
-        public _Screen screen;
 
         public Room() { }
 

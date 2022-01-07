@@ -125,7 +125,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
                 int index = listFood.SelectedIndices[i];
                 if (index != -1)
                 {
-                    foods.RemoveAt(foods.FindIndex(f=>listFood.Items[index].ToString().Contains(f.name)));
+                    billDetails.RemoveAt(billDetails.FindIndex(f=>listFood.Items[index].ToString().Contains(f.food.name)));
                     listFood.Items.RemoveAt(index);
                 }
             }

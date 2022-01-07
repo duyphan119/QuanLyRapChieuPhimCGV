@@ -29,7 +29,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fSelectChair));
             this.btnSelect = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // btnSelect
@@ -43,12 +45,22 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1152, 648);
+            this.panel1.TabIndex = 128;
+            // 
             // fSelectChair
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1176, 706);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSelect);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fSelectChair";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chọn Ghế";
@@ -59,5 +71,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
 
         #endregion
         private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -15,7 +15,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         private const string EDIT = "Đang sửa";
         private string action = "";
         private DAO_Room dao_r = new DAO_Room();
-        private DAO_Screen dao_s = new DAO_Screen();
         private List<Room> rooms = new List<Room>();
         public ucRoom(ucAdministration uc, Employee e)
         {
@@ -23,11 +22,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             employee = e;
             InitializeComponent();
             Dock = DockStyle.Fill;
-            
-            dao_s.getAll().ForEach(screen =>
-            {
-                cbScreen.Items.Add(screen.name);
-            });
 
             rooms = dao_r.getAll();
 
@@ -48,8 +42,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 room.id,
                 room.name,
                 room.totalRows,
-                room.totalColumns,
-                room.screen.name
+                room.totalColumns
             });
         }
 
@@ -58,7 +51,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             txtName.Enabled = status;
             txtTotalRows.Enabled = status;
             txtTotalColumns.Enabled = status;
-            cbScreen.Enabled = status;
         }
 
         public void resetTextBox()
@@ -111,10 +103,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 error += "Tổng số cột không hợp lệ\n";
                 Console.WriteLine(ex);
             }
-            if(cbScreen.Text == "")
-            {
-                error += "Chưa chọn màn hình";
-            }
             return error;
         }
 
@@ -128,7 +116,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 room.name = txtName.Text;
                 room.totalRows = Convert.ToInt32(txtTotalRows.Text);
                 room.totalColumns = Convert.ToInt32(txtTotalColumns.Text);
-                room.screen = dao_s.getByName(cbScreen.Text);
                 return room;
             }
             else
@@ -150,7 +137,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             txtName.Text = room.name;
             txtTotalRows.Text = ""+room.totalRows;
             txtTotalColumns.Text = ""+room.totalColumns;
-            cbScreen.Text = room.screen.name;
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -176,7 +162,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                     dgvRoom.Rows[i].Cells[1].Value = room.name;
                     dgvRoom.Rows[i].Cells[2].Value = room.totalRows;
                     dgvRoom.Rows[i].Cells[3].Value = room.totalColumns;
-                    dgvRoom.Rows[i].Cells[4].Value = room.screen.name;
                 }
             }
         }
@@ -186,12 +171,19 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         //Sửa datagridview
         public void editEmployee(Room room)
         {
-            dao_r.updateOne(room);
-            int index = rooms.FindIndex(emp => emp.id == room.id);
-            if (index != -1)
+            if (dao_r.isAllowedUpdate(room))
             {
-                rooms[index] = room;
-                updateDataGridView(room);
+                dao_r.updateOne(room);
+                int index = rooms.FindIndex(emp => emp.id == room.id);
+                if (index != -1)
+                {
+                    rooms[index] = room;
+                    updateDataGridView(room);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Thay đổi tổng số hàng và cột sẽ thừa ghế", "Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnSave_Click(object sender, EventArgs e)
@@ -270,20 +262,9 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             resetTextBox();
         }
 
-        private void cbScreen_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbId_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string id = cbId.Text;
-            cbId.Items.Clear();
-            if (cbScreen.SelectedIndex != -1)
-            {
-                List<Room> newRooms = rooms.FindAll(r => r.screen.name == cbScreen.Text);
-                newRooms.ForEach(ro =>
-                {
-                    cbId.Items.Add(ro.id);
-                });
-            }
-            cbId.Text = id;
-            
+            e.Handled = true;
         }
     }
 }

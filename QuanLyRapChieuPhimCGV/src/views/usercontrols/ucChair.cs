@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using QuanLyRapChieuPhimCGV.src.DAO;
 using QuanLyRapChieuPhimCGV.src.models;
+using QuanLyRapChieuPhimCGV.src.views.forms;
 
 namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
 {
@@ -360,6 +361,22 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                         cbId.Text = chair.id;
                     }
                 }
+            }
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            if(cbRoom.Text != "")
+            {
+                Room room = rooms.Find(r => r.name == cbRoom.Text);
+                if(room != null)
+                {
+                    new fSelectChair(room).Visible = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Chưa chọn rạp", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

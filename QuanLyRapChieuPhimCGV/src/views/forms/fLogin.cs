@@ -21,12 +21,18 @@ namespace QuanLyRapChieuPhimCGV
 
         private void txtId_KeyPress(object sender, KeyPressEventArgs e)
         {
-            login();
+            if (e.KeyChar == (char)13)
+            {
+                login();
+            }
         }
 
         private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
-            login();
+            if(e.KeyChar == (char)13)
+            {
+                login();
+            }
         }
 
         public void login()
@@ -34,8 +40,8 @@ namespace QuanLyRapChieuPhimCGV
             string username = txtId.Text;
             string password = txtPassword.Text;
 
-            //username = "210002";
-            //password = "1234567";
+            //username = "210001";
+            //password = "123456";
 
             string error = dao_e.login(username, password);
             if(error == "")

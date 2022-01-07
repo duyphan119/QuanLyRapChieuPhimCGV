@@ -83,7 +83,6 @@
     <Compile Include="src\DAO\DAO_Food.cs" />
     <Compile Include="src\DAO\DAO_Room.cs" />
     <Compile Include="src\DAO\DAO_GroupFood.cs" />
-    <Compile Include="src\DAO\DAO_Distributor.cs" />
     <Compile Include="src\DAO\DAO_Screen.cs" />
     <Compile Include="src\models\Bill.cs" />
     <Compile Include="src\models\BillDetail.cs" />
@@ -96,7 +95,6 @@
     <Compile Include="src\models\Employee.cs" />
     <Compile Include="src\models\Food.cs" />
     <Compile Include="src\models\GroupFood.cs" />
-    <Compile Include="src\models\Distributor.cs" />
     <Compile Include="src\models\Movie.cs" />
     <Compile Include="src\models\Room.cs" />
     <Compile Include="src\models\Schedule.cs" />
@@ -124,6 +122,12 @@
     <Compile Include="src\views\forms\fHome.Designer.cs">
       <DependentUpon>fHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\views\forms\fNewCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\views\forms\fNewCustomer.Designer.cs">
+      <DependentUpon>fNewCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\views\forms\fReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,11 +152,11 @@
     <Compile Include="src\views\forms\fSelectFood.Designer.cs">
       <DependentUpon>fSelectFood.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\views\forms\fSelectMovie.cs">
+    <Compile Include="src\views\forms\fSelectSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\views\forms\fSelectMovie.Designer.cs">
-      <DependentUpon>fSelectMovie.cs</DependentUpon>
+    <Compile Include="src\views\forms\fSelectSchedule.Designer.cs">
+      <DependentUpon>fSelectSchedule.cs</DependentUpon>
     </Compile>
     <Compile Include="src\views\forms\fSelectTicketPrice.cs">
       <SubType>Form</SubType>
@@ -237,12 +241,6 @@
     <Compile Include="src\views\usercontrols\ucHome.Designer.cs">
       <DependentUpon>ucHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\views\usercontrols\ucDistributor.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="src\views\usercontrols\ucDistributor.Designer.cs">
-      <DependentUpon>ucDistributor.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\views\usercontrols\ucMovie.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -310,6 +308,9 @@
     <EmbeddedResource Include="src\views\forms\fHome.resx">
       <DependentUpon>fHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\views\forms\fNewCustomer.resx">
+      <DependentUpon>fNewCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\views\forms\fReport.resx">
       <DependentUpon>fReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -322,8 +323,8 @@
     <EmbeddedResource Include="src\views\forms\fSelectFood.resx">
       <DependentUpon>fSelectFood.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\views\forms\fSelectMovie.resx">
-      <DependentUpon>fSelectMovie.cs</DependentUpon>
+    <EmbeddedResource Include="src\views\forms\fSelectSchedule.resx">
+      <DependentUpon>fSelectSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\views\forms\fSelectTicketPrice.resx">
       <DependentUpon>fSelectTicketPrice.cs</DependentUpon>
@@ -331,6 +332,7 @@
     <EmbeddedResource Include="src\views\forms\fStatistics.resx">
       <DependentUpon>fStatistics.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\views\report\Bill.rdlc" />
     <EmbeddedResource Include="src\views\report\Statistics.rdlc" />
     <EmbeddedResource Include="src\views\report\Ticket.rdlc" />
     <EmbeddedResource Include="src\views\usercontrols\ucBill.resx">
@@ -365,9 +367,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\views\usercontrols\ucHome.resx">
       <DependentUpon>ucHome.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\views\usercontrols\ucDistributor.resx">
-      <DependentUpon>ucDistributor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\views\usercontrols\ucMovie.resx">
       <DependentUpon>ucMovie.cs</DependentUpon>
@@ -498,6 +497,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="public\img\cash.png" />
+    <None Include="public\img\analytics-64.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -33,7 +33,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             employee = e;
             InitializeComponent();
             Dock = DockStyle.Fill;
-        
+            flowLayoutPanel1.Controls.Remove(btnEdit);
+            flowLayoutPanel1.Controls.Remove(btnDelete);
         }
 
         public void getBillDetails(List<BillDetail> bds)
@@ -52,8 +53,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         }
         public void getCustomer(Customer cus)
         {
-            curCustomer = cus;
+            dao_cus.getExpenseOfCustomer(cus, 15);
+            curCustomer = dao_cus.getById(cus.id);
             txtCustomer.Text = curCustomer.id;
+            txtCustomer.Text = curCustomer.id;
+            numPoint.Maximum = (decimal)curCustomer.totalPoint;
+            label9.Text = $"Điểm ({curCustomer.totalPoint})";
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -71,7 +76,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         }
         public void setEnabled(bool status)
         {
-            btnSelectFood.Enabled = rbtnNo.Enabled = rbtnYes.Enabled = status;
+            btnSelectFood.Enabled = rbtnNo.Enabled = rbtnYes.Enabled = numPoint.Enabled = status;
         }
         private void ucBill_Load(object sender, EventArgs e)
         {
@@ -128,6 +133,10 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             {
                 error += "Chưa chọn đồ ăn\n";
             }
+            if(numPoint.Value >0 && numPoint.Value < 20)
+            {
+                error += "Điểm tối thiểu là 20\n";
+            }
             return error;
         }
         public Bill getData()
@@ -141,7 +150,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                     date = DateTime.Now,
                     employee = employee,
                     customer = curCustomer,
-                    totalPrice = totalPrice
+                    point = (int)numPoint.Value,
+                    totalPrice = totalPrice - numPoint.Value * 1000
                 };
             }
             else
@@ -168,6 +178,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 //Cập nhật điểm
                 curCustomer.totalPoint += point;
                 dao_cus.updateOne(curCustomer);
+                bills.Add(bill);
             }
             cbId.Items.Add(bill.id);
             addToDGV(bill);
@@ -234,32 +245,6 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                     dgvBill.Rows[i].Cells[4].Value = bill.totalPrice.ToString("#,##");
                 }
             }
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            Bill bill = getData();
-            if (bill != null)
-            {
-                if(action == ADD)
-                {
-                    addBill(bill);
-                    billDetails.ForEach(billDetail =>
-                    {
-                        dao_bd.insertOne(bill.id, billDetail);
-                    });
-                }
-                if(action == EDIT)
-                {
-                    editBill(bill);
-                    dao_bd.deleteAll(bill.id);
-                    billDetails.ForEach(billDetail =>
-                    {
-                        dao_bd.insertOne(bill.id, billDetail);
-                    });
-                }
-            }
-            totalPrice = 0;
         }
 
         private void btnSelectCustomer_Click(object sender, EventArgs e)
@@ -370,6 +355,48 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                     setData(bill);
                 }
             }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dgvBill.SelectedRows.Count; i++)
+            {
+                int index = dgvBill.SelectedRows[i].Index;
+                if (index != -1)
+                {
+                    Bill bill = bills.Find(tik => tik.id == dgvBill.Rows[index].Cells[0].Value.ToString());
+                    if (bill != null)
+                    {
+                        new fReport(bill).Visible = true;
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Bill bill = getData();
+            if (bill != null)
+            {
+                if (action == ADD)
+                {
+                    addBill(bill);
+                    billDetails.ForEach(billDetail =>
+                    {
+                        dao_bd.insertOne(bill.id, billDetail);
+                    });
+                }
+                if (action == EDIT)
+                {
+                    editBill(bill);
+                    dao_bd.deleteAll(bill.id);
+                    billDetails.ForEach(billDetail =>
+                    {
+                        dao_bd.insertOne(bill.id, billDetail);
+                    });
+                }
+            }
+            totalPrice = 0;
         }
     }
 }

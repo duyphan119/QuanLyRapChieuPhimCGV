@@ -11,7 +11,7 @@ namespace QuanLyRapChieuPhimCGV.src.models
         public string id;
         public int startDate;
         public int endDate;
-        public int objectPerson;
+        public string objectPerson;
         //0: THÀNH VIÊN TỪ 22 TUỔI TRỞ XUỐNG HOẶC CÓ THẺ U22
         //1: TRẺ EM
         //2: HỌC SINH

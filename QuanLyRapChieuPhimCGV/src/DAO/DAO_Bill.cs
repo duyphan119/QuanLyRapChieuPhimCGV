@@ -24,7 +24,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                 DAO_Customer dao_cus = new DAO_Customer();
                 DAO_Employee dao_e = new DAO_Employee();
                 cnn.Open();
-                string query = "select sohd, ngayhd, makhach, manv, tongtien from hoadon";
+                string query = "select sohd, ngayhd, makhach, manv, tongtien, diem from hoadon";
                 scm = new SqlCommand(query, cnn);
                 reader = scm.ExecuteReader();
                 while (reader.Read())
@@ -35,6 +35,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                     bill.customer = reader.IsDBNull(2) ? null :dao_cus.getById(reader.GetString(2));
                     bill.employee = dao_e.getById(reader.GetString(3));
                     bill.totalPrice = reader.GetDecimal(4);
+                    bill.point = reader.GetInt32(5);
                     bills.Add(bill);
                 }
             }
@@ -57,7 +58,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                 DAO_Customer dao_cus = new DAO_Customer();
                 DAO_Employee dao_e = new DAO_Employee();
                 cnn.Open();
-                string query = $"select sohd, ngayhd, makhach, manv, tongtien from hoadon where sohd = '{billId}'";
+                string query = $"select sohd, ngayhd, makhach, manv, tongtien, diem from hoadon where sohd = '{billId}'";
                 scm = new SqlCommand(query, cnn);
                 reader = scm.ExecuteReader();
                 while (reader.Read())
@@ -68,6 +69,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                     bill.customer = reader.IsDBNull(2) ? null : dao_cus.getById(reader.GetString(2));
                     bill.employee = dao_e.getById(reader.GetString(3));
                     bill.totalPrice = reader.GetDecimal(4);
+                    bill.point = reader.GetInt32(5);
                 }
             }
             catch (Exception ex)
@@ -85,19 +87,21 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
         {
             try
             {
+
                 string query = "";
-                cnn.Open();
                 if (bill.customer == null)
                 {
-                    query = $@"insert into hoadon(sohd, ngayhd, manv, tongtien) values 
-                           ('{bill.id}','{bill.date.ToString("yyyy-MM-dd")}','{bill.employee.id}', {bill.totalPrice})";
+                    query = $@"insert into hoadon(sohd, ngayhd, manv, tongtien, diem) values 
+                           ('{bill.id}','{bill.date.ToString("yyyy-MM-dd")}','{bill.employee.id}', {bill.totalPrice}, {bill.point})";
                 }
                 else
                 {
-                    query = $@"insert into hoadon(sohd, ngayhd, manv, makhach, tongtien) values 
-                          ('{bill.id}','{bill.date.ToString("yyyy-MM-dd")}','{bill.employee.id}', '{bill.customer.id}', {bill.totalPrice})";
+                    query = $@"insert into hoadon(sohd, ngayhd, manv, makhach, tongtien, diem) values 
+                          ('{bill.id}','{bill.date.ToString("yyyy-MM-dd")}','{bill.employee.id}', '{bill.customer.id}', {bill.totalPrice}, {bill.point})";
+                    Console.WriteLine(query);
                 }
-                
+                cnn.Open();
+
                 scm = new SqlCommand(query, cnn);
                 scm.ExecuteNonQuery();
             }
@@ -120,12 +124,12 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
                 if (bill.customer == null)
                 {
                     query = $@"update hoadon set ngayhd = '{bill.date.ToString("yyyy-MM-dd")}', manv = '{bill.employee.id}', 
-                        tongtien = {bill.totalPrice} where sohd = '{bill.id}'";
+                        tongtien = {bill.totalPrice},diem = {bill.point} where sohd = '{bill.id}'";
                 }
                 else
                 {
                     query = $@"update hoadon set ngayhd = '{bill.date.ToString("yyyy-MM-dd")}', manv = '{bill.employee.id}', 
-                        makhach = '{bill.customer.id}',  tongtien = {bill.totalPrice} where sohd = '{bill.id}'";
+                        makhach = '{bill.customer.id}',diem = {bill.point},  tongtien = {bill.totalPrice} where sohd = '{bill.id}'";
                 }
                
                 scm = new SqlCommand(query, cnn);

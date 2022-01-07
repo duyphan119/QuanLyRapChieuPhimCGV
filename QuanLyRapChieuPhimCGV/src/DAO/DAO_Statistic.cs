@@ -581,5 +581,38 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             }
             return table;
         }
+        public DataTable getRevenueOfMovie(string keyword)
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("maphim", typeof(string));
+            table.Columns.Add("tenphim", typeof(string));
+            table.Columns.Add("doanhthu", typeof(decimal));
+            try
+            {
+                cnn.Open();
+                string query = $@"SELECT L.MAPHIM,P.TENPHIM, SUM(V.TONGTIEN) AS DOANHTHU
+                            FROM LICHCHIEU L, VE V, PHIM P
+                            WHERE L.MALICH = V.MALICH AND L.MAPHIM = P.MAPHIM  AND TENPHIM LIKE N'%{keyword}%'
+                            GROUP BY L.MAPHIM, P.TENPHIM";
+                scm = new SqlCommand(query, cnn);
+                reader = scm.ExecuteReader();
+                while (reader.Read())
+                {
+                    string id = reader.GetString(0);
+                    string name = reader.GetString(1);
+                    decimal revenue = reader.GetDecimal(2);
+                    table.Rows.Add(id, name, revenue);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return table;
+        }
     }
 }

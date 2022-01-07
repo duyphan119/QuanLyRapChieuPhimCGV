@@ -125,16 +125,18 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             // 
             // btnSelect
             // 
+            this.btnSelect.FlatAppearance.BorderSize = 0;
             this.btnSelect.Location = new System.Drawing.Point(124, 105);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(98, 32);
             this.btnSelect.TabIndex = 8;
-            this.btnSelect.Text = "Chọn";
+            this.btnSelect.Text = "Thêm";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelete.Location = new System.Drawing.Point(26, 418);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(98, 32);

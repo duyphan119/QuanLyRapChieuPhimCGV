@@ -26,9 +26,7 @@ D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\Quan
 D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.usercontrols.ucGroupFood.resources
 D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.usercontrols.ucBookTicket.resources
 D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.usercontrols.ucChairType.resources
-D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.usercontrols.ucDistributor.resources
 D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.usercontrols.ucAdministration.resources
-D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.forms.fSelectMovie.resources
 D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.usercontrols.ucCardMovie.resources
 D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.forms.fSelectCustomer.resources
 D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.forms.fSelectTicketPrice.resources
@@ -98,3 +96,5 @@ D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\RdlC
 D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.forms.fSelectFood.resources
 D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.usercontrols.ucReportStatistic.resources
 D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.forms.fStatistics.resources
+D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.forms.fNewCustomer.resources
+D:\Documents\DoAnLTTQ\QuanLyRapChieuPhimCGV\QuanLyRapChieuPhimCGV\obj\Debug\QuanLyRapChieuPhimCGV.src.views.forms.fSelectSchedule.resources

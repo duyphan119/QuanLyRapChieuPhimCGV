@@ -24,7 +24,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.forms
             {
                 dgvTicketPrice.Rows.Add(new object[]
                 {
-                    ticketPrice.id, ticketPrice.startDate, ticketPrice.endDate, ticketPrice.price.ToString("#,##"), myMethod.getObjectPersonBuyTicketName(ticketPrice.objectPerson)
+                    ticketPrice.id, ticketPrice.startDate, ticketPrice.endDate, ticketPrice.price.ToString("#,##"), ticketPrice.objectPerson
                 });
             });
         }

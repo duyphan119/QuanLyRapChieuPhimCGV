@@ -44,6 +44,39 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             return chairTypes;
         }
 
+        public List<ChairType> getAllInRoom(Room room)//Lấy tất cả loại ghế trong phòng
+        {
+            List<ChairType> chairTypes = new List<ChairType>();
+            try
+            {
+                cnn.Open();
+                string query = $@"SELECT L.MALOAIGHE, L.TENLOAI
+                                FROM LOAIGHE L, GHE G, PHONGCHIEU P
+                                WHERE L.MALOAIGHE = G.MALOAI AND
+	                                G.MAPHONG = P.MAPHONG AND
+	                                P.MAPHONG = '{room.id}'
+                                GROUP BY L.MALOAIGHE, L.TENLOAI";
+                scm = new SqlCommand(query, cnn);
+                reader = scm.ExecuteReader();
+                while (reader.Read())
+                {
+                    ChairType chairType = new ChairType();
+                    chairType.id = reader.GetString(0);
+                    chairType.name = reader.GetString(1);
+                    chairTypes.Add(chairType);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                cnn.Close();
+            }
+            return chairTypes;
+        }
+
         public ChairType getById(string chairTypeId)//Lấy loại ghế theo mã loại ghế
         {
             ChairType chairType = null;

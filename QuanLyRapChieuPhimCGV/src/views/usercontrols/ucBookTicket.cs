@@ -41,6 +41,12 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
 
             setEnabled(false);
             cbId.Enabled = false;
+
+            if(employee.permission != 2)
+            {
+                flowLayoutPanel1.Controls.Remove(btnEdit);
+                flowLayoutPanel1.Controls.Remove(btnDelete);
+            }
         }
 
         private void ucTicket_Load(object sender, EventArgs e)
@@ -52,7 +58,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         {
             if(curSchedule != null)
             {
-                new fSelectChair(this, curSchedule).Visible = true;
+                new fSelectChair(this, curSchedule, curCustomer).Visible = true;
             }
         }
 
@@ -77,7 +83,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
 
         private void btnSelectMovie_Click(object sender, EventArgs e)
         {
-            new fSelectMovie(this).Visible = true;
+            new fSelectSchedule(this).Visible = true;
         }
 
         public void getSchedule(Movie movie, DateTime dt)
@@ -126,7 +132,8 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
 
         public void getCustomer(Customer cus)
         {
-            curCustomer = cus;
+            dao_cus.getExpenseOfCustomer(cus, 15);
+            curCustomer = dao_cus.getById(cus.id);
             txtCustomer.Text = curCustomer.id;
             numPoint.Maximum = (decimal)curCustomer.totalPoint;
             label9.Text = $"Điểm ({curCustomer.totalPoint})";
@@ -149,7 +156,26 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         public string validate()
         {
             string error = "";
-
+            if(cbId.Text == "")
+            {
+                error += "Chưa chọn số vé\n";
+            }
+            if(curSchedule == null)
+            {
+                error += "Chưa chọn lịch chiếu\n";
+            }
+            if(curTicketPrice == null)
+            {
+                error += "Chưa chọn giá vé\n";
+            }
+            if(curChair == null)
+            {
+                error += "Chưa chọn ghế\n";
+            }
+            if(numPoint.Value > 0 && numPoint.Value < 20)
+            {
+                error += "Điểm phải tối thiểu 20\n";
+            }
             return error;
         }
         public Ticket getData()
@@ -165,7 +191,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                     employee = employee,
                     price = curTicketPrice,
                     customer = curCustomer,
-                    totalPrice = curTicketPrice.price,
+                    totalPrice = curTicketPrice.price - numPoint.Value * 1000,
                     date = DateTime.Now,
                     point = (int)numPoint.Value
                 };
@@ -206,6 +232,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
             }
           
             addToDGV(ticket);
+            tickets.Add(ticket);
             cbId.Items.Add(ticket.id);
             MessageBox.Show("Lưu thành công", "Thành công");
             cbId.Text = dao_t.generateId();
@@ -281,23 +308,16 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
         {
             dgvTicket.Rows.Add(new object[]
             {
-                ticket.id, ticket.customer == null ? "" : ticket.customer.id, ticket.employee.name, ticket.price.price.ToString("#,##"), ticket.schedule.dateTime.ToString("dd-MM-yyyy HH:mm"), ticket.chair.room.name, dao_ch.getChairName(ticket.chair)
+                ticket.id, 
+                ticket.date.ToString("dd-MM-yyyy HH:mm:ss"), 
+                ticket.customer == null ? "" : ticket.customer.id, 
+                ticket.employee.name, 
+                ticket.price.price.ToString("#,##"), 
+                ticket.schedule.dateTime.ToString("dd-MM-yyyy HH:mm"), 
+                ticket.chair.room.name, 
+                dao_ch.getChairName(ticket.chair), 
+                ticket.point
             });
-        }
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            Ticket ticket = getData();
-            if (ticket != null)
-            {
-                if(action == ADD)
-                {
-                    addTicket(ticket);
-                }
-                if(action == EDIT)
-                {
-                    editTicket(ticket);
-                }
-            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -418,6 +438,22 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            for(int i = 0; i < dgvTicket.SelectedRows.Count; i++)
+            {
+                int index = dgvTicket.SelectedRows[i].Index;
+                if (index != -1)
+                {
+                    Ticket ticket = tickets.Find(tik => tik.id == dgvTicket.Rows[index].Cells[0].Value.ToString());
+                    if (ticket != null)
+                    {
+                        new fReport(ticket).Visible = true;
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             Ticket ticket = getData();
             if (ticket != null)
             {
@@ -429,7 +465,7 @@ namespace QuanLyRapChieuPhimCGV.src.views.usercontrols
                 {
                     editTicket(ticket);
                 }
-                new fReport(ticket).Visible = true;
+                reset();
             }
         }
     }
