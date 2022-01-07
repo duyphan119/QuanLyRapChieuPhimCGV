@@ -98,19 +98,18 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
         }
         public bool isAllowedUpdate(Room room)
         {
-            bool result = 
+            bool result = true;
             try
             {
-                DAO_Screen dao_s = new DAO_Screen();
                 cnn.Open();
-                string query = $"SELECT COUNT(MAGHE) FROM GHE WHERE (VITRICOT > 20 OR VITRIHANG > 11) AND MAPHONG = '{room.id}'";
+                string query = $"SELECT COUNT(MAGHE) FROM GHE WHERE (VITRICOT > {room.totalColumns} OR VITRIHANG > {room.totalRows}) AND MAPHONG = '{room.id}'";
                 scm = new SqlCommand(query, cnn);
                 reader = scm.ExecuteReader();
                 if (reader.Read())
                 {
                    if(reader.GetInt32(0) > 0)
                     {
-
+                        result = false;
                     } 
                 }
             }
@@ -122,6 +121,7 @@ namespace QuanLyRapChieuPhimCGV.src.DAO
             {
                 cnn.Close();
             }
+            return result;
         }
         public void updateOne(Room room)//Cập nhật phòng chiếu
         {
